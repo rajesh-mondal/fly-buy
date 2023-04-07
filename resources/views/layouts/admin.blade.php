@@ -42,7 +42,10 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
+{{-- <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script> --}}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+			  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+			  crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- overlayScrollbars -->
@@ -88,6 +91,27 @@
       });
   });
 </script>
+{{-- <!-- Showing alert message before logout -->
+<script>
+  $(document).on("click", "#logout", function(e){
+    e.preventDefault();
+    var link = $(this).attr("href");
+      swal({
+        title: "Are You Want to Logout?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          window.location.href = link;
+        } else {
+          swal("Not Logout!");
+        }
+      });
+  });
+</script> --}}
 <script>
   @if(Session::has('message'))
     var type="{{Session::get('alert-type','info')}}"
