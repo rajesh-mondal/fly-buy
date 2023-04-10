@@ -46,8 +46,8 @@
                       <td>{{ $row->category_name }}</td>
                       <td>{{ $row->category_slug }}</td>
                       <td>
-                        <a href="#" class="btn btn-info btn-sm">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   @endforeach
@@ -71,13 +71,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
+      <form action="{{ route('category.store') }}" method="Post">
+      @csrf
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="category_name">Category Name</label>
+            <input type="text" class="form-control" id="category_name" name="category_name" required>
+            <small id="emailHelp" class="form-text text-muted">This is your main category.</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -108,8 +108,8 @@
       });
   });
 </script>
-{{-- <!-- Showing alert message before logout -->
-<script>
+<!-- Showing alert message before logout -->
+{{-- <script>
   $(document).on("click", "#logout", function(e){
     e.preventDefault();
     var link = $(this).attr("href");
