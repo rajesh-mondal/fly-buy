@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#categoryModal"> + Add New</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#editModal"> + Add New</button>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -29,7 +29,7 @@
               <h3 class="card-title">All Categories Lists</h3>
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped table-sm">
                   <thead>
                     <tr>
                       <th>SL</th>
@@ -46,8 +46,8 @@
                       <td>{{ $row->category_name }}</td>
                       <td>{{ $row->category_slug }}</td>
                       <td>
-                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                        <a href="#" class="btn btn-info btn-sm edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="{{ route('category.delete',$row->id) }}" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   @endforeach
@@ -88,5 +88,46 @@
     </div>
   </div>
 </div>
+
+<!-- Category Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('category.update') }}" method="Post">
+      @csrf
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="category_name">Category Name</label>
+            <input type="text" class="form-control" id="edit_category_name" name="category_name" required>
+            <input type="hidden" class="form-control" id="edit_category_id" name="id" required>
+            <small id="emailHelp" class="form-text text-muted">This is your main category.</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  $('body').on('click','.edit',function(){
+    let cat_id=$(this).data('id');
+    $.get("category/edit/"+cat_id, function(data){
+      $('#edit_category_name').val(data.category_name);
+      $('#edit_category_id').val(data.id);
+    });
+  });
+</script>
 
 @endsection

@@ -43,4 +43,43 @@ class CategoryController extends Controller
         $notification = array('message' => 'Category Created', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    // Edit category method
+    public function edit($id){
+        // $data=DB::table('categories')->where('id',$id)->first();
+
+        $data=Category::findorfail($id);
+        return response()->json($data);
+    }
+
+    // Update category method
+    public function update(Request $request){
+        // Query Builder
+        // $data =array();
+        // $data['category_name'] = $request->category_name;
+        // $data['category_slug'] = Str::slug($request->category_name, '-');
+        // DB::table('categories')->where('id',$request->id)->update($data);
+
+        // Eloquent ORM
+        $category = Category::where('id',$request->id)->first();
+        $category->update([
+            'category_name'=>$request->category_name,
+            'category_slug' => Str::slug($request->category_name, '-')
+        ]);
+
+        $notification = array('message' => 'Category Updated', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
+
+    // Delete category method
+    public function destroy($id){
+        // Query Builder
+        // DB::table('categories')->where('id',$id)->delete();
+
+        // Eloquent ORM
+        $category = Category::find($id);
+        $category->delete();
+        $notification = array('message' => 'Category Deleted', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
 }
