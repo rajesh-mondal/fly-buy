@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Toastr -->
   <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
+  <!-- Sweetalert -->
+  <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/sweetalert/sweetalert.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
   <!-- DataTables -->
@@ -73,7 +75,7 @@
 <!-- Toaster Js -->
 <script type="text/javascript" src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
 <!-- Sweetalert Js -->
-<script src="{{ asset('backend/plugins/sweetalert/sweetalert.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{asset ('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{asset ('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -109,7 +111,7 @@
   });
 </script>
 <!-- Showing alert message before logout -->
-{{-- <script>
+<script>
   $(document).on("click", "#logout", function(e){
     e.preventDefault();
     var link = $(this).attr("href");
@@ -128,7 +130,7 @@
         }
       });
   });
-</script> --}}
+</script>
 <script>
   @if(Session::has('message'))
     var type="{{Session::get('alert-type','info')}}"
