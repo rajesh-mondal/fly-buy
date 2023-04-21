@@ -127,7 +127,9 @@
             {data:'DT_RowIndex',name:'DT_RowIndex'},
             {data:'brand_name',name:'brand_name'},
             {data:'brand_slug',name:'brand_slug'},
-            {data:'brand_logo',name:'brand_logo'},
+            {data:'brand_logo',name:'brand_logo', render: function(data, type, full, meta){
+              return "<img src=\"" +data+ "\" height=\"30\" />"
+            }},
             {data:'action',name:'action',orderable:true,searchable:true},
         ]
     });
