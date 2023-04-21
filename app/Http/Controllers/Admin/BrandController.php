@@ -8,6 +8,7 @@ use DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
 use Image;
+use File;
 
 class BrandController extends Controller
 {
@@ -25,7 +26,7 @@ class BrandController extends Controller
                 ->addColumn('action', function($row){
 
                     $actionbtn='<a href="#" class="btn btn-info btn-sm edit" data-id="'.$row->id.'" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></a>
-                    <a href="'.route('childcategory.delete',[$row->id]).'" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>';
+                    <a href="'.route('brand.delete',[$row->id]).'" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>';
 
                     return $actionbtn;
                 })
@@ -58,4 +59,56 @@ class BrandController extends Controller
         $notification = array('message' => 'Brand Created!', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    //Edit method
+    public function edit($id){
+        $data = DB::table('brands')->where('id',$id)->first();
+        return view('admin.category.brand.edit', compact('data'));
+    }
+
+    //Update method
+    public function update(Request $request){
+        $slug = Str::slug($request->brand_name, '-');
+
+        $data = array();
+        $data['brand_name'] = $request->brand_name;
+        $data['brand_slug'] = Str::slug($request->brand_name, '-');
+
+        if($request->brand_logo){
+            if(File::exists($request->old_logo)){
+                unlink($request->old_logo);
+            }
+            $photo = $request->brand_logo;
+            $photoname = $slug.'.'.$photo->getClientOriginalExtension();
+            $photo->move('files/brand/',$photoname); //without image intervention
+            // Image::make($photo)->resize(240, 120)->save('files/brand/'.$photoname); //Image intervention
+            $data['brand_logo'] = 'files/brand/'.$photoname;
+            DB::table('brands')->where('id', $request->id)->update($data);
+
+            $notification = array('message' => 'Brand Updated!', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        }else{
+            $data['brand_logo'] = 'files/brand/'.$request->old_logo;
+            DB::table('brands')->where('id', $request->id)->update($data);
+            
+            $notification = array('message' => 'Brand Updated!', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        }
+    }
+
+    //Delete method
+    public function destroy($id){
+        $data = DB::table('brands')->where('id',$id)->first();
+        $image = $data->brand_logo;
+        
+        if(File::exists($image)){
+            unlink($image);
+        }
+
+        DB::table('brands')->where('id',$id)->delete();
+
+        $notification = array('message' => 'Brand Deleted!', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
+
 }

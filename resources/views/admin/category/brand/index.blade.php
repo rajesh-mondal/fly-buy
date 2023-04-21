@@ -137,7 +137,7 @@
 
   $('body').on('click','.edit',function(){
     let id=$(this).data('id');
-    $.get("childcategory/edit/"+id, function(data){
+    $.get("brand/edit/"+id, function(data){
       $("#modal_body").html(data);
     });
   });
