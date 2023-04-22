@@ -45,4 +45,13 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::get('/edit/{id}','BrandController@edit');
         Route::post('/update','BrandController@update')->name('brand.update');
     });
+
+    //Setting Route
+    Route::group(['prefix'=>'brand'], function(){
+        //SEO Setting Route
+        Route::group(['prefix'=>'seo'], function(){
+            Route::get('/','SettingController@seo')->name('seo.setting');
+            Route::post('/update/{id}','SettingController@seoUpdate')->name('seo.setting.update');
+        });
+    });
 });
