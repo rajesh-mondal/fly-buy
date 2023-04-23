@@ -96,9 +96,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('childcategory.index') }}" class="nav-link">
+                <a href="{{ route('page.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Page Manage</p>
+                  <p>Page Create</p>
                 </a>
               </li>
               <li class="nav-item">
