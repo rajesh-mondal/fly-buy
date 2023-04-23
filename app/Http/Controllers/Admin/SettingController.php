@@ -16,7 +16,6 @@ class SettingController extends Controller
     //seo page show method
     public function seo(){
         $data = DB::table('seos')->first();
-        // return $data;
         return view('admin.setting.seo', compact('data'));
     }
 
@@ -37,4 +36,25 @@ class SettingController extends Controller
         $notification = array('message' => 'SEO Setting Updated!', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    //smtp setting show
+    public function smtp(){
+        $smtp = DB::table('smtp')->first();
+        return view('admin.setting.smtp', compact('smtp'));
+    }
+
+    //smtp setting update
+    public function smtpUpdate(Request $request, $id){
+        $data = array();
+        $data['mailer'] = $request->mailer;
+        $data['host'] = $request->meta_author;
+        $data['port'] = $request->meta_tag;
+        $data['user_name'] = $request->user_name;
+        $data['password'] = $request->password;
+        DB::table('smtp')->where('id',$id)->update($data);
+
+        $notification = array('message' => 'SMTP Setting Updated!', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
+
 }
