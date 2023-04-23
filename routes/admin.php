@@ -8,9 +8,9 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
     Route::get('/admin/home','AdminController@admin')->name('admin.home');
     Route::get('/admin/logout','AdminController@logout')->name('admin.logout');
     Route::get('/admin/password/change','AdminController@passwordChange')->name('admin.password.change');
-    Route::post('/admin/password/change','AdminController@passwordUpdate')->name('admin.password.update');
+    Route::post('/admin/password/update','AdminController@passwordUpdate')->name('admin.password.update');
 
-    //Category Route
+    //Category Routes
     Route::group(['prefix'=>'category'], function(){
         Route::get('/','CategoryController@index')->name('category.index');
         Route::post('/store','CategoryController@store')->name('category.store');
@@ -19,7 +19,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::post('/update','CategoryController@update')->name('category.update');
     });
 
-    //Subcategory Route
+    //Subcategory Routes
     Route::group(['prefix'=>'subcategory'], function(){
         Route::get('/','SubcategoryController@index')->name('subcategory.index');
         Route::post('/store','SubcategoryController@store')->name('subcategory.store');
@@ -28,7 +28,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::post('/update','SubcategoryController@update')->name('subcategory.update');
     });
 
-    //Childcategory Route
+    //Childcategory Routes
     Route::group(['prefix'=>'childcategory'], function(){
         Route::get('/','ChildcategoryController@index')->name('childcategory.index');
         Route::post('/store','ChildcategoryController@store')->name('childcategory.store');
@@ -37,7 +37,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::post('/update','ChildcategoryController@update')->name('childcategory.update');
     });
     
-    //Brand Route
+    //Brand Routes
     Route::group(['prefix'=>'brand'], function(){
         Route::get('/','BrandController@index')->name('brand.index');
         Route::post('/store','BrandController@store')->name('brand.store');
@@ -46,14 +46,14 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::post('/update','BrandController@update')->name('brand.update');
     });
 
-    //Setting Route
+    //Setting Routes
     Route::group(['prefix'=>'brand'], function(){
         //SEO Setting Route
         Route::group(['prefix'=>'seo'], function(){
             Route::get('/','SettingController@seo')->name('seo.setting');
             Route::post('/update/{id}','SettingController@seoUpdate')->name('seo.setting.update');
         });
-        //SMTP Setting Route
+        //SMTP Setting Routes
         Route::group(['prefix'=>'smtp'], function(){
             Route::get('/','SettingController@smtp')->name('smtp.setting');
             Route::post('/update/{id}','SettingController@smtpUpdate')->name('smtp.setting.update');
