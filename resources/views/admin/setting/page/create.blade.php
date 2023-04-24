@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="page_description">Page Description</label>
-                                <textarea class="form-control textarea"></textarea>
+                                <textarea class="form-control textarea" name="page_description"></textarea>
                                 <small>This data will show on your webpage</small>
                             </div>
                         </div>

@@ -46,8 +46,8 @@
                       <td>{{ $row->page_name}}</td>
                       <td>{{ $row->page_title}}</td>
                       <td>
-                        <a href="#" class="btn btn-info btn-sm edit"><i class="fas fa-pencil-alt"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>
+                        <a href="{{ route('page.edit', $row->id) }}" class="btn btn-info btn-sm edit"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="{{ route('page.delete', $row->id) }}" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   @endforeach
