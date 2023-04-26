@@ -57,4 +57,9 @@ class SettingController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    //website setting
+    public function websiteSetting(){
+        $setting = DB::table('settings')->first();
+        return view('admin.setting.website_setting', compact('setting'));
+    }
 }
