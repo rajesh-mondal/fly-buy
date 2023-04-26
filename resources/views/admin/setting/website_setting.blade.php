@@ -39,8 +39,8 @@
                             <div class="form-group">
                                 <label for="currency">Currency</label>
                                 <select class="form-control" name="currency" id="">
-                                    <option value="৳" {{ ($setting->currency == '৳') ? 'selected': '' }}>BDT</option>
-                                    <option value="$" {{ ($setting->currency == '$') ? 'selected': '' }}>USD</option>
+                                    <option value="৳" {{ ($setting->currency == '৳') ? 'selected': '' }}>BDT (৳)</option>
+                                    <option value="$" {{ ($setting->currency == '$') ? 'selected': '' }}>USD ($)</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -91,12 +91,12 @@
 
                             <div class="form-group">
                                 <label for="logo">Main Logo</label>
-                                <input type="file" class="form-control" name="logo" id="logo">
-                                <input type="hidden" name="old_logo" value="{{$setting->logo}}>
+                                <input type="file" class="form-control" name="logo">
+                                <input type="hidden" name="old_logo" value="{{$setting->logo}}">
                             </div>
                             <div class="form-group">
-                                <label for="favicon ">Favicon</label>
-                                <input type="file" class="form-control" name="favicon " id="favicon ">
+                                <label for="favicon">Favicon</label>
+                                <input type="file" class="form-control" name="favicon">
                                 <input type="hidden" name="old_favicon" value="{{$setting->favicon}}">
                             </div>
 
