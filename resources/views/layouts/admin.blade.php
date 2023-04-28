@@ -75,19 +75,21 @@
 <script type="text/javascript" src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
 <!-- Sweetalert Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<!-- Dropify JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 <!-- DataTables  & Plugins -->
-<script src="{{asset ('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{asset ('backend/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- Summernote -->
 <script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
 
