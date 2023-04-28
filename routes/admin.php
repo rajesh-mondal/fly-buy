@@ -56,7 +56,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
     });
 
     //Setting Routes
-    Route::group(['prefix'=>'brand'], function(){
+    Route::group(['prefix'=>'setting'], function(){
         //SEO Setting Route
         Route::group(['prefix'=>'seo'], function(){
             Route::get('/','SettingController@seo')->name('seo.setting');
@@ -84,5 +84,14 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
             Route::post('/update/{id}','PageController@update')->name('page.update');
             Route::get('/delete/{id}','PageController@destroy')->name('page.delete');
         });
+    });
+
+    //Coupon Routes
+    Route::group(['prefix'=>'coupon'], function(){
+        Route::get('/','CouponController@index')->name('coupon.index');
+        // Route::post('/store','CouponController@store')->name('coupon.store');
+        // Route::get('/delete/{id}','CouponController@destroy')->name('coupon.delete');
+        // Route::get('/edit/{id}','CouponController@edit');
+        // Route::post('/update','CouponController@update')->name('coupon.update');
     });
 });
