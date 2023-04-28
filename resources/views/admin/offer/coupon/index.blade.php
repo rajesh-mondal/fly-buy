@@ -44,6 +44,9 @@
                   
                   </tbody>
                 </table>
+                <form id="deleted_form" action="" method="post">
+                    @csrf @method('DELETE')
+                </form>
               </div>
           </div>
         </div>
@@ -114,7 +117,7 @@
 
 @section('script')
 <script>
-    $('.ytable').DataTable({
+    let table = $('.ytable').DataTable({
         processing:true,
         serverSide:true,
         ajax:"{{ route('coupon.index') }}",
@@ -128,19 +131,43 @@
         ]
     });
     
+    $(document).ready(function(){
+        $(document).on('click', '#delete_coupon', function(e){
+            e.preventDefault();
+            var url = $(this).attr('href');
+            $("#deleted_form").attr('action',url);
 
-    $(document).on('click', '#delete_coupon', function(e){
-        e.preventDefault();
-        var id = $(this).data('id');
-        alert(id);
-        swal({
-            title: "Are You Want to Delete?",
-            text: "Once Delete, This will be permanently Delete!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
+            swal({
+                title: "Are You Want to Delete?",
+                text: "Once Delete, This will be permanently Delete!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $("#deleted_form").submit();
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
         });
 
+        $('#deleted_form').submit(function(e){
+            e.preventDefault();
+            var url = $(this).attr('action');
+            var request =$(this).serialize();
+            $.ajax({
+                url:url,
+                type:'post',
+                async:false,
+                data:request,
+                success:function(data){
+                    $('#deleted_form')[0].reset();
+                    table.ajax.reload();
+                }
+            });
+        });
     });
 </script>
 @endsection
