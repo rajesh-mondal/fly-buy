@@ -47,4 +47,30 @@ class WarehouseController extends Controller
         $notification = array('message' => 'Warehouse Added!', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    //Edit method
+    public function edit($id){
+        $warehouse = DB::table('warehouses')->where('id',$id)->first();
+        return view('admin.category.warehouse.edit', compact('warehouse'));
+    }
+
+    //Update method
+    public function update(Request $request){
+        $data = array();
+        $data['warehouse_name'] = $request->warehouse_name;
+        $data['warehouse_address'] = $request->warehouse_address;
+        $data['warehouse_phone'] = $request->warehouse_phone;
+        
+        DB::table('warehouses')->where('id',$request->id)->update($data);
+
+        $notification = array('message' => 'Warehouse Updated!', 'alert-type' => 'success');
+        return redirect()->route('warehouse.index')->with($notification);
+    }
+
+    //Delete method
+    public function destroy($id){
+        DB::table('warehouses')->where('id',$id)->delete();
+        $notification = array('message' => 'Warehouse Deleted!', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
 }

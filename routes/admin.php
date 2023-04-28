@@ -50,9 +50,9 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
     Route::group(['prefix'=>'warehouse'], function(){
         Route::get('/','WarehouseController@index')->name('warehouse.index');
         Route::post('/store','WarehouseController@store')->name('warehouse.store');
-        // Route::get('/delete/{id}','WarehouseController@destroy')->name('warehouse.delete');
-        // Route::get('/edit/{id}','WarehouseController@edit');
-        // Route::post('/update','WarehouseController@update')->name('warehouse.update');
+        Route::get('/delete/{id}','WarehouseController@destroy')->name('warehouse.delete');
+        Route::get('/edit/{id}','WarehouseController@edit');
+        Route::post('/update','WarehouseController@update')->name('warehouse.update');
     });
 
     //Setting Routes
