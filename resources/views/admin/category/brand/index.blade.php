@@ -102,7 +102,9 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+@endsection
+
+@section('script')
 <!-- Dropify JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 
@@ -118,7 +120,7 @@
 </script>
 
 <script type="text/javascript">
-  $(function childcategory(){
+  $(function brand(){
     var table=$('.ytable').DataTable({
         processing:true,
         serverSide:true,
@@ -142,5 +144,4 @@
     });
   });
 </script>
-
 @endsection

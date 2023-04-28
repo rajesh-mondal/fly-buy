@@ -108,22 +108,22 @@
     </div>
   </div>
 </div>
+@endsection
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+@section('script')
 <script type="text/javascript">
   $(function childcategory(){
     var table=$('.ytable').DataTable({
-        processing:true,
-        serverSide:true,
-        ajax:"{{ route('childcategory.index') }}",
-        columns:[
-            {data:'DT_RowIndex',name:'DT_RowIndex'},
-            {data:'childcategory_name',name:'childcategory_name'},
-            {data:'category_name',name:'category_name'},
-            {data:'subcategory_name',name:'subcategory_name'},
-            {data:'action',name:'action',orderable:true,searchable:true},
-        ]
+      processing:true,
+      serverSide:true,
+      ajax:"{{ route('childcategory.index') }}",
+      columns:[
+          {data:'DT_RowIndex',name:'DT_RowIndex'},
+          {data:'childcategory_name',name:'childcategory_name'},
+          {data:'category_name',name:'category_name'},
+          {data:'subcategory_name',name:'subcategory_name'},
+          {data:'action',name:'action',orderable:true,searchable:true},
+      ]
     });
   });
 
@@ -134,5 +134,4 @@
     });
   });
 </script>
-
 @endsection

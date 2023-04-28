@@ -101,11 +101,11 @@
     </div>
   </div>
 </div>
+@endsection
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+@section('script')
 <script type="text/javascript">
-  $(function childcategory(){
+  $(function warehouse(){
     var table=$('.ytable').DataTable({
         processing:true,
         serverSide:true,
@@ -133,5 +133,4 @@
     $('.submit_btn').addClass('d-none');
   });
 </script>
-
 @endsection
