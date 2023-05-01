@@ -65,7 +65,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="#" method="Post">
+      <form action="{{ route('coupon.store') }}" method="Post" id="add_form">
       @csrf
         <div class="modal-body">
             <div class="form-group">
@@ -73,8 +73,8 @@
                 <input type="text" class="form-control" name="coupon_code" required>
             </div>
             <div class="form-group">
-                <label for="coupon_code">Coupon Type</label>
-                <select class="form-control" name="type" id="">
+                <label for="type">Coupon Type</label>
+                <select class="form-control" name="type" id="" required>
                     <option value="1">Fixed</option>
                     <option value="2">Percentage</option>
                 </select>
@@ -87,10 +87,16 @@
                 <label for="valid_date">Valid Date</label>
                 <input type="date" class="form-control" name="valid_date" required>
             </div>
+            <div class="form-group">
+              <label for="status">Coupon Status</label>
+              <select class="form-control" name="status" id="" required>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+              </select>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary"><span class="d-none">Loading...</span> Submit</button>
+          <button type="submit" class="btn btn-primary"><span class="loading d-none">Loading...</span> Submit</button>
         </div>
       </form>
     </div>
@@ -149,6 +155,27 @@
                     $("#deleted_form").submit();
                 } else {
                     swal("Your imaginary file is safe!");
+                }
+            });
+        });
+
+        //store coupon ajax call
+        $('#add_form').submit(function(e){
+            e.preventDefault();
+            $('.loading').removeClass('d-none');
+            var url = $(this).attr('action');
+            var request =$(this).serialize();
+            $.ajax({
+                url:url,
+                type:'post',
+                async:false,
+                data:request,
+                success:function(data){
+                  toastr.success(data);
+                    $('#add_form')[0].reset();
+                    $('.loading').addClass('d-none');
+                    $('#addModal').modal('hide');
+                    table.ajax.reload();
                 }
             });
         });

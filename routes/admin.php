@@ -89,7 +89,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
     //Coupon Routes
     Route::group(['prefix'=>'coupon'], function(){
         Route::get('/','CouponController@index')->name('coupon.index');
-        // Route::post('/store','CouponController@store')->name('coupon.store');
+        Route::post('/store','CouponController@store')->name('coupon.store');
         Route::delete('/delete/{id}','CouponController@destroy')->name('coupon.delete');
         // Route::get('/edit/{id}','CouponController@edit');
         // Route::post('/update','CouponController@update')->name('coupon.update');

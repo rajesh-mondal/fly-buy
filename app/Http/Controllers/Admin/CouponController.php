@@ -33,6 +33,20 @@ class CouponController extends Controller
         return view('admin.offer.coupon.index');
     }
 
+    //store method
+    public function store(Request $request){
+        $data = array(
+            'coupon_code' => $request->coupon_code,
+            'type' => $request->type,
+            'coupon_amount' => $request->coupon_amount,
+            'valid_date' => $request->valid_date,
+            'status' => $request->status,
+        );
+
+        DB::table('coupons')->insert($data);
+        return response()->json('Coupon Created');
+    }
+
     //delete coupon method
     public function destroy($id){
         DB::table('coupons')->where('id',$id)->delete();
