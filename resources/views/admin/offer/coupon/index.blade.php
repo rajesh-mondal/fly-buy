@@ -163,6 +163,7 @@
                 async:false,
                 data:request,
                 success:function(data){
+                  toastr.success(data);
                     $('#deleted_form')[0].reset();
                     table.ajax.reload();
                 }
