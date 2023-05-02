@@ -22,7 +22,7 @@ class PickupController extends Controller
                 ->addColumn('action', function($row){
 
                     $actionbtn='<a href="#" class="btn btn-info btn-sm edit" data-id="'.$row->id.'" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></a>
-                    <a href="'.route('coupon.delete',$row->id).'" class="btn btn-danger btn-sm" id="delete_coupon"><i class="fas fa-trash"></i></a>';
+                    <a href="'.route('pickup.point.delete',$row->id).'" class="btn btn-danger btn-sm" id="delete_coupon"><i class="fas fa-trash"></i></a>';
 
                     return $actionbtn;
                 })
@@ -32,6 +32,7 @@ class PickupController extends Controller
         return view('admin.pickup_point.index');
     }
 
+    //store method
     public function store(Request $request){
         $data = array(
             'pickup_point_name' => $request->pickup_point_name,
@@ -42,5 +43,30 @@ class PickupController extends Controller
 
         DB::table('pickup_point')->insert($data);
         return response()->json('Pickup Point Created');
+    }
+
+    //edit method
+    public function edit($id){
+        $data = DB::table('pickup_point')->where('id',$id)->first();
+        return view('admin.pickup_point.edit', compact('data'));
+    }
+    
+    //update method
+    public function update(Request $request){
+        $data = array(
+            'pickup_point_name' => $request->pickup_point_name,
+            'pickup_point_address' => $request->pickup_point_address,
+            'pickup_point_phone' => $request->pickup_point_phone,
+            'pickup_point_phone_two' => $request->pickup_point_phone_two,
+        );
+
+        DB::table('pickup_point')->where('id',$request->id)->update($data);
+        return response()->json('Successfully Updated');
+    }
+
+    //delete coupon method
+    public function destroy($id){
+        DB::table('pickup_point')->where('id',$id)->delete();
+        return response()->json('Successfully Delete!');
     }
 }
