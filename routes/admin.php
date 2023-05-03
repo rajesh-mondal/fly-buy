@@ -103,4 +103,13 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::get('/edit/{id}','PickupController@edit');
         Route::post('/update','PickupController@update')->name('pickup.point.update');
     });
+
+    //Product Routes
+    Route::group(['prefix'=>'product'], function(){
+        Route::get('/create','ProductController@create')->name('product.create');
+        Route::post('/store','ProductController@store')->name('pickup.point.store');
+        // Route::delete('/delete/{id}','ProductController@destroy')->name('pickup.point.delete');
+        // Route::get('/edit/{id}','ProductController@edit');
+        // Route::post('/update','ProductController@update')->name('pickup.point.update');
+    });
 });
