@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="subcategory_id">Category/Subcategory <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="subcategory_id">
+                                        <select class="form-control" name="subcategory_id" id="subcategory_id">
                                             <option disabled selected>Choose Category</option>
                                             @foreach ($category as $row)
                                                 @php
@@ -71,8 +71,8 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="childcategory_id">Childcategory <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="childcategory_id" id="">
-                                            <option value="">1</option>
+                                        <select class="form-control" name="childcategory_id" id="childcategory_id">
+                                            
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-6">
@@ -99,7 +99,7 @@
                                         <input type="text" name="unit" class="form-control" required>
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <label for="tags">Tags <span class="text-danger">*</span></label>
+                                        <label for="tags">Tags <span class="text-danger">*</span></label><br>
                                         <input type="text" name="tags" class="form-control" data-role="tagsinput" />
                                     </div>
                                 </div>
@@ -224,6 +224,21 @@
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
 
+    // ajax request send for collect childcategory
+    $("#subcategory_id").change(function(){
+        var id = $(this).val();
+        $.ajax({
+            url: "{{ url("/get-child-category/") }}/"+id,
+            type: 'get',
+            success: function(data){
+                $('select[name="childcategory_id"]').empty();
+                    $.each(data, function(key,data){
+                        $('select[name="childcategory_id"]').append('<option value="'+ data.id +'">'+ data.childcategory_name +'</option>');
+                    });
+            }
+        });
+    });
+
     $(document).ready(function(){
         var postURL = "<?php echo url('addmore'); ?>";
         var i =1;
@@ -238,6 +253,7 @@
             $('#row'+button_id+'').remove();
         });
     });
+
 </script>
 
 @endsection
