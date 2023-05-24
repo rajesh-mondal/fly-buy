@@ -31,10 +31,21 @@
         </div><!-- /.container-fluid -->
     </section>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="">
+            <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                     <!-- left column -->
                     <div class="col-md-8">
@@ -48,11 +59,11 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="name">Product Name <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <input type="text" class="form-control" name="name" {{ old('name') }} required>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="code">Product code <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="code" required>
+                                        <input type="text" class="form-control" name="code" {{ old('code') }} required>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="subcategory_id">Category/Subcategory <span class="text-danger">*</span></label>
@@ -79,7 +90,7 @@
                                         <label for="brand_id">Brand <span class="text-danger">*</span></label>
                                         <select class="form-control" name="brand_id">
                                             @foreach ($brand as $row)
-                                                <option value="{{ $row->brand_name }}">{{ $row->brand_name }}</option>
+                                                <option value="{{ $row->id }}">{{ $row->brand_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -96,26 +107,26 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="unit">Unit <span class="text-danger">*</span></label>
-                                        <input type="text" name="unit" class="form-control" required>
+                                        <input type="text" name="unit" class="form-control" value="{{ old('unit') }}" required>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="tags">Tags <span class="text-danger">*</span></label><br>
-                                        <input type="text" name="tags" class="form-control" data-role="tagsinput" />
+                                        <input type="text" name="tags" class="form-control" value="{{ old('tags') }}" data-role="tagsinput" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-4">
                                         <label for="purchase_price">Purchase Price</label>
-                                        <input type="text" name="purchase_price" class="form-control">
+                                        <input type="text" name="purchase_price" class="form-control" value="{{ old('purchase_price') }}">
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="selling_price">Selling Price <span class="text-danger">*</span></label>
-                                        <input type="text" name="selling_price" class="form-control" required>
+                                        <input type="text" name="selling_price" class="form-control" value="{{ old('selling_price') }}" required>
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="discount_price">Discount Price</label>
-                                        <input type="text" name="discount_price" class="form-control">
+                                        <input type="text" name="discount_price" class="form-control" value="{{ old('discount_price') }}">
                                     </div>
                                 </div>
 
@@ -130,32 +141,32 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="stock_quantity">Stock</label>
-                                        <input type="text" name="stock_quantity" class="form-control">
+                                        <input type="text" name="stock_quantity" class="form-control" value="{{ old('stock_quantity') }}">
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="color">Color</label><br>
-                                        <input type="text" name="color" class="form-control" data-role="tagsinput" />
+                                        <input type="text" name="color" class="form-control" value="{{ old('color') }}" data-role="tagsinput" />
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="size">Size</label><br>
-                                        <input type="text" name="size" class="form-control" data-role="tagsinput" />
+                                        <input type="text" name="size" class="form-control" value="{{ old('size') }}" data-role="tagsinput" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label for="description">Product Details</label><br>
-                                        <textarea class="form-control textarea" name="description"></textarea>
+                                        <textarea class="form-control textarea" name="description">{{ old('description') }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label for="video">Video Embed Code</label><br>
-                                        <textarea class="form-control" name="video"></textarea>
+                                        <textarea class="form-control" name="video">{{ old('video') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +216,7 @@
                         </div>
                         <!-- /.card -->
                     </div>
-                    <!--/.col (right) -->
+                    <button class="btn btn-info ml-2" type="submit">Submit</button>
                 </div>
                 <!-- /.row -->
             </form>

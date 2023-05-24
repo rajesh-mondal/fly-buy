@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->integer('childcategory_id')->nullable();
             $table->integer('brand_id')->nullable();
             $table->string('name');
-            $table->string('code');
+            $table->string('slug');
+            $table->string('code')->nullable();
             $table->string('unit')->nullable();
             $table->string('tags')->nullable();
             $table->string('color')->nullable();
@@ -30,7 +31,7 @@ class CreateProductsTable extends Migration
             $table->string('selling_price')->nullable();
             $table->string('discount_price')->nullable();
             $table->string('stock_quantity')->nullable();
-            $table->integer('warehouse')->nullable();
+            $table->string('warehouse')->nullable();
             $table->string('description')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('images')->nullable();
@@ -41,6 +42,8 @@ class CreateProductsTable extends Migration
             $table->integer('cash_on_delivery')->nullable();
             $table->integer('admin_id')->nullable();
             $table->integer('pickup_point_id')->nullable();
+            $table->string('date')->nullable();
+            $table->string('month')->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
