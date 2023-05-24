@@ -15,10 +15,16 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
   <!-- Sweetalert -->
   <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/sweetalert/sweetalert.min.css') }}">
+  <!-- Dropify CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
+  <!-- Bootstrap Switch -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css" integrity="sha512-k0mv2AxPJ4AejpOEP1sNXZdPsco5TFV+rcpPMuWO6URTfsQPppR8WKeAIzl4gxGWJpP8UhjHlZMtGWD95wePmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap Tagsinput -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.css" integrity="sha512-X6069m1NoT+wlVHgkxeWv/W7YzlrJeUhobSzk4J09CWxlplhUzJbiJVvS9mX1GGVYf5LA3N9yQW5Tgnu9P4C7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -77,6 +83,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <!-- Dropify JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.min.js" integrity="sha512-fOXlIsQGynoJoqOT+dgctsZJTMeqs1rqOLTQw9lQslGPYeWzUobfouAF6aBus+bMen49C5ftcBZzgxoBjxrdsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Bootstrap Tagsinput -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.js" integrity="sha512-SXJkO2QQrKk2amHckjns/RYjUIBCI34edl9yh0dzgw3scKu0q4Bo/dUr+sGHMUha0j9Q1Y7fJXJMaBi4xtyfDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
