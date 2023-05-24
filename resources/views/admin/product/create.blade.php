@@ -56,8 +56,17 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="subcategory_id">Category/Subcategory <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="subcategory_id" id="">
-                                            <option value="">1</option>
+                                        <select class="form-control" name="subcategory_id">
+                                            <option disabled selected>Choose Category</option>
+                                            @foreach ($category as $row)
+                                                @php
+                                                    $subcategory = DB::table('subcategories')->where('category_id',$row->id)->get();    
+                                                @endphp
+                                                <option style="color: blue;" disabled>{{ $row->category_name }}</option>
+                                                    @foreach ($subcategory as $row)
+                                                        <option value="{{ $row->id }}"> -- {{ $row->subcategory_name }}</option>
+                                                    @endforeach
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-6">
@@ -68,14 +77,18 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="brand_id">Brand <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="brand_id" id="">
-                                            <option value="">1</option>
+                                        <select class="form-control" name="brand_id">
+                                            @foreach ($brand as $row)
+                                                <option value="{{ $row->brand_name }}">{{ $row->brand_name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="pickup_point_id">Pickup Point</label>
-                                        <select class="form-control" name="pickup_point_id" id="">
-                                            <option value="">1</option>
+                                        <select class="form-control" name="pickup_point_id">
+                                            @foreach ($pickup_point as $row)
+                                                <option value="{{ $row->id }}">{{ $row->pickup_point_name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -83,13 +96,11 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="unit">Unit <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="unit" id="">
-                                            <option value="">1</option>
-                                        </select>
+                                        <input type="text" name="unit" class="form-control" required>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="tags">Tags <span class="text-danger">*</span></label>
-                                        <input type="text" name="tags" class="form-control">
+                                        <input type="text" name="tags" class="form-control" data-role="tagsinput" />
                                     </div>
                                 </div>
 
@@ -112,7 +123,9 @@
                                     <div class="form-group col-lg-6">
                                         <label for="warehouse">Warehouse <span class="text-danger">*</span></label>
                                         <select class="form-control" name="warehouse" id="">
-                                            <option value="">1</option>
+                                            @foreach ($warehouse as $row)
+                                                <option value="{{ $row->warehouse_name }}">{{ $row->warehouse_name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-6">
