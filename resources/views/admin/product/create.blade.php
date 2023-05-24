@@ -107,11 +107,11 @@
                                 <div class="row">
                                     <div class="form-group col-lg-4">
                                         <label for="purchase_price">Purchase Price</label>
-                                        <input type="text" name="purchase_price" class="form-control" required>
+                                        <input type="text" name="purchase_price" class="form-control">
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="selling_price">Selling Price <span class="text-danger">*</span></label>
-                                        <input type="text" name="selling_price" class="form-control">
+                                        <input type="text" name="selling_price" class="form-control" required>
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="discount_price">Discount Price</label>
