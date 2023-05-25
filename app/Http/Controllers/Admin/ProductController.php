@@ -68,6 +68,11 @@ class ProductController extends Controller
                 ->rawColumns(['action','category_name','subcategory_name','brand_name','thumbnail','featured','today_deal','status'])
                 ->make(true);
         }
+        $category = DB::table('categories')->get();
+        $brand = DB::table('brands')->get();
+        $warehouse = DB::table('warehouses')->get();
+        return view('admin.product.index', compact('category','brand','warehouse'));
+
         return view('admin.product.index');
     }
 

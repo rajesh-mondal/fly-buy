@@ -29,6 +29,44 @@
             <div class="card-header">
               <h3 class="card-title">All Product List</h3>
             </div>
+            <br>
+            <div class="row p-2">
+                <div class="form-group col-3">
+                    <label>Category</label>
+                    <select class="form-control submitable" name="category_id">
+                        <option value="">All</option>
+                        @foreach ($category as $row)
+                            <option value="{{$row->id}}">{{ $row->category_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label>Brand</label>
+                    <select class="form-control submitable" name="brand_id">
+                        <option value="">All</option>
+                        @foreach ($brand as $row)
+                            <option value="{{$row->id}}">{{ $row->brand_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label>Warehouse</label>
+                    <select class="form-control submitable" name="warehouse_id">
+                        <option value="">All</option>
+                        @foreach ($warehouse as $row)
+                            <option value="{{$row->id}}">{{ $row->warehouse_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label>Status</label>
+                    <select class="form-control submitable" name="status">
+                        <option value="">All</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                    </select>
+                </div>
+            </div>
             <div class="card-body">
                 <table id="" class="table table-bordered table-striped table-sm ytable">
                   <thead>
@@ -111,6 +149,11 @@ $('body').on('click','.active_featured',function(){
         }
     });
 });
+
+//suitable class call for every change
+$(document).on('change','.submitable',function(){
+    $('.ytable').DataTable().ajax.reload();
+})
 
 </script>
 @endsection
