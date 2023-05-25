@@ -150,6 +150,34 @@ $('body').on('click','.active_featured',function(){
     });
 });
 
+//deactive deal
+$('body').on('click','.deactive_deal',function(){
+    var id=$(this).data('id');
+    var url = "{{ url('product/not-deal') }}/"+id;
+    $.ajax({
+        url: url,
+        type: 'get',
+        success:function(data){
+            toastr.success(data);
+            table.ajax.reload();
+        }
+    });
+});
+
+//active deal
+$('body').on('click','.active_deal',function(){
+    var id=$(this).data('id');
+    var url = "{{ url('product/active-deal') }}/"+id;
+    $.ajax({
+        url: url,
+        type: 'get',
+        success:function(data){
+            toastr.success(data);
+            table.ajax.reload();
+        }
+    });
+});
+
 //suitable class call for every change
 $(document).on('change','.submitable',function(){
     $('.ytable').DataTable().ajax.reload();

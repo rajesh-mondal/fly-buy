@@ -46,9 +46,9 @@ class ProductController extends Controller
                 })
                 ->editColumn('today_deal',function($row){
                     if ($row->today_deal==1) {
-                        return '<a href=""><i class="fas fa-thumbs-down text-danger"> <span class="badge badge-success">active</span> </i></a>';
+                        return '<a href="#" data-id="'.$row->id.'" class="deactive_deal"><i class="fas fa-thumbs-down text-danger"> <span class="badge badge-success">active</span> </i></a>';
                     } else {
-                        return '<a href=""><i class="fas fa-thumbs-up text-success"> <span class="badge badge-success">deactive</span> </i></a>';
+                        return '<a href="#" data-id="'.$row->id.'" class="active_deal"><i class="fas fa-thumbs-up text-success"> <span class="badge badge-danger">deactive</span> </i></a>';
                     }
                 })
                 ->editColumn('status',function($row){
@@ -164,7 +164,19 @@ class ProductController extends Controller
     //active featured
     public function activefeatured($id){
         DB::table('products')->where('id',$id)->update(['featured'=>1]);
-        return response()->json('Product Featured Acticated');
+        return response()->json('Product Featured Activated');
+    }
+
+    //not deal
+    public function notdeal($id){
+        DB::table('products')->where('id',$id)->update(['today_deal'=>0]);
+        return response()->json('Today Deal Deactivated');
+    }
+
+    //active deal
+    public function activedeal($id){
+        DB::table('products')->where('id',$id)->update(['today_deal'=>1]);
+        return response()->json('Today Deal Activated');
     }
 
     //delete method

@@ -117,5 +117,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         // Route::post('/update','ProductController@update')->name('pickup.point.update');
         Route::get('/active-featured/{id}','ProductController@activefeatured');
         Route::get('/not-featured/{id}','ProductController@notfeatured');
+        Route::get('/active-deal/{id}','ProductController@activedeal');
+        Route::get('/not-deal/{id}','ProductController@notdeal');
     });
 });
