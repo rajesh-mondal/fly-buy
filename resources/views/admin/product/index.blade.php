@@ -63,8 +63,8 @@
 @section('script')
 
 <script type="text/javascript">
-$(function childcategory(){
-    var table=$('.ytable').DataTable({
+$(function product(){
+    table=$('.ytable').DataTable({
         processing:true,
         serverSide:true,
         ajax:"{{ route('product.index') }}",
@@ -81,6 +81,34 @@ $(function childcategory(){
             {data:'status',name:'status'},
             {data:'action',name:'action',orderable:true,searchable:true},
         ]
+    });
+});
+
+//deactive featured
+$('body').on('click','.deactive_featured',function(){
+    var id=$(this).data('id');
+    var url = "{{ url('product/not-featured') }}/"+id;
+    $.ajax({
+        url: url,
+        type: 'get',
+        success:function(data){
+            toastr.success(data);
+            table.ajax.reload();
+        }
+    });
+});
+
+//active featured
+$('body').on('click','.active_featured',function(){
+    var id=$(this).data('id');
+    var url = "{{ url('product/active-featured') }}/"+id;
+    $.ajax({
+        url: url,
+        type: 'get',
+        success:function(data){
+            toastr.success(data);
+            table.ajax.reload();
+        }
     });
 });
 

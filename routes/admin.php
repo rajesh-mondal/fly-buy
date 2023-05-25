@@ -115,5 +115,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         // Route::delete('/delete/{id}','ProductController@destroy')->name('pickup.point.delete');
         // Route::get('/edit/{id}','ProductController@edit');
         // Route::post('/update','ProductController@update')->name('pickup.point.update');
+        Route::get('/active-featured/{id}','ProductController@activefeatured');
+        Route::get('/not-featured/{id}','ProductController@notfeatured');
     });
 });
