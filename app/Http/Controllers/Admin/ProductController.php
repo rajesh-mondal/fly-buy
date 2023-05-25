@@ -61,7 +61,7 @@ class ProductController extends Controller
                 ->addColumn('action', function($row){
 
                     $actionbtn='<a href="#" class="btn btn-info btn-sm edit"><i class="fas fa-pencil-alt"></i></a><a href="#" class="btn btn-primary btn-sm edit"><i class="fas fa-eye"></i></a>
-                    <a href="'.route('brand.delete',[$row->id]).'" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>';
+                    <a href="'.route('product.delete',[$row->id]).'" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>';
 
                     return $actionbtn;
                 })
@@ -160,5 +160,12 @@ class ProductController extends Controller
     public function activefeatured($id){
         DB::table('products')->where('id',$id)->update(['featured'=>1]);
         return response()->json('Product Featured Acticated');
+    }
+
+    //delete method
+    public function destroy($id){
+        DB::table('products')->where('id',$id)->delete();
+        $notification = array('message' => 'Successfully Deleted!', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
     }
 }

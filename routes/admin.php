@@ -112,7 +112,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::get('/','ProductController@index')->name('product.index');
         Route::get('/create','ProductController@create')->name('product.create');
         Route::post('/store','ProductController@store')->name('product.store');
-        // Route::delete('/delete/{id}','ProductController@destroy')->name('pickup.point.delete');
+        Route::get('/delete/{id}','ProductController@destroy')->name('product.delete');
         // Route::get('/edit/{id}','ProductController@edit');
         // Route::post('/update','ProductController@update')->name('pickup.point.update');
         Route::get('/active-featured/{id}','ProductController@activefeatured');
