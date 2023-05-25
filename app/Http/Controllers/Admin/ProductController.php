@@ -7,12 +7,54 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 use Image;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+    }
+
+    //index method
+    public function index(Request $request){
+        if($request->ajax()){
+            $imgurl = 'files/product';
+            $data = Product::latest()->get();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->editColumn('thumbnail',function($row) use ($imgurl) {
+                    return '<img src="'.$imgurl.'/'.$row->thumbnail.'" height="30" width="30">';
+                })
+                ->editColumn('category_name',function($row){
+                    return $row->category->category_name;
+                })
+                ->editColumn('subcategory_name',function($row){
+                    return $row->subcategory->subcategory_name;
+                })
+                ->editColumn('brand_name',function($row){
+                    return $row->brand->brand_name;
+                })
+                ->editColumn('featured',function($row){
+                    if ($row->featured==1) {
+                        return "yes";
+                    } else {
+                        return "no";
+                    }
+                })
+                ->addColumn('action', function($row){
+
+                    $actionbtn='<a href="#" class="btn btn-info btn-sm edit"><i class="fas fa-pencil-alt"></i></a><a href="#" class="btn btn-primary btn-sm edit"><i class="fas fa-eye"></i></a>
+                    <a href="'.route('brand.delete',[$row->id]).'" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i></a>';
+
+                    return $actionbtn;
+                })
+                ->rawColumns(['action','category_name','subcategory_name','brand_name','thumbnail','featured'])
+                ->make(true);
+        }
+        return view('admin.product.index');
     }
 
     //create method

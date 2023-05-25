@@ -109,6 +109,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
 
     //Product Routes
     Route::group(['prefix'=>'product'], function(){
+        Route::get('/','ProductController@index')->name('product.index');
         Route::get('/create','ProductController@create')->name('product.create');
         Route::post('/store','ProductController@store')->name('product.store');
         // Route::delete('/delete/{id}','ProductController@destroy')->name('pickup.point.delete');
