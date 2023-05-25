@@ -115,9 +115,14 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::get('/delete/{id}','ProductController@destroy')->name('product.delete');
         // Route::get('/edit/{id}','ProductController@edit');
         // Route::post('/update','ProductController@update')->name('pickup.point.update');
+        //Feture Product Routes
         Route::get('/active-featured/{id}','ProductController@activefeatured');
         Route::get('/not-featured/{id}','ProductController@notfeatured');
+        //Today Deal Routes
         Route::get('/active-deal/{id}','ProductController@activedeal');
         Route::get('/not-deal/{id}','ProductController@notdeal');
+        //Status Routes
+        Route::get('/active-status/{id}','ProductController@activestatus');
+        Route::get('/deactive-status/{id}','ProductController@deactivestatus');
     });
 });

@@ -13,7 +13,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#addModal"> + Add New</button>
+            <a href="{{ route('product.create') }}" class="btn btn-primary"> + Add New</a>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="" class="table table-bordered table-striped table-sm ytable">
+                <table id="" class="table table-bordered table-striped table-sm ytable w-100">
                   <thead>
                     <tr>
                       <th>SL</th>
@@ -168,6 +168,34 @@ $('body').on('click','.deactive_deal',function(){
 $('body').on('click','.active_deal',function(){
     var id=$(this).data('id');
     var url = "{{ url('product/active-deal') }}/"+id;
+    $.ajax({
+        url: url,
+        type: 'get',
+        success:function(data){
+            toastr.success(data);
+            table.ajax.reload();
+        }
+    });
+});
+
+//deactive status
+$('body').on('click','.deactive_status',function(){
+    var id=$(this).data('id');
+    var url = "{{ url('product/deactive-status') }}/"+id;
+    $.ajax({
+        url: url,
+        type: 'get',
+        success:function(data){
+            toastr.success(data);
+            table.ajax.reload();
+        }
+    });
+});
+
+//active status
+$('body').on('click','.active_status',function(){
+    var id=$(this).data('id');
+    var url = "{{ url('product/active-status') }}/"+id;
     $.ajax({
         url: url,
         type: 'get',
