@@ -33,7 +33,7 @@
             <div class="row p-2">
                 <div class="form-group col-3">
                     <label>Category</label>
-                    <select class="form-control submitable" name="category_id">
+                    <select class="form-control submitable" name="category_id" id="category_id">
                         <option value="">All</option>
                         @foreach ($category as $row)
                             <option value="{{$row->id}}">{{ $row->category_name }}</option>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group col-3">
                     <label>Brand</label>
-                    <select class="form-control submitable" name="brand_id">
+                    <select class="form-control submitable" name="brand_id" id="brand_id">
                         <option value="">All</option>
                         @foreach ($brand as $row)
                             <option value="{{$row->id}}">{{ $row->brand_name }}</option>
@@ -51,17 +51,17 @@
                 </div>
                 <div class="form-group col-3">
                     <label>Warehouse</label>
-                    <select class="form-control submitable" name="warehouse_id">
+                    <select class="form-control submitable" name="warehouse" id="warehouse">
                         <option value="">All</option>
                         @foreach ($warehouse as $row)
-                            <option value="{{$row->id}}">{{ $row->warehouse_name }}</option>
+                            <option value="{{$row->warehouse_name}}">{{ $row->warehouse_name }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group col-3">
                     <label>Status</label>
-                    <select class="form-control submitable" name="status">
-                        <option value="">All</option>
+                    <select class="form-control submitable" name="status" id="status">
+                        <option value="1">All</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                     </select>
@@ -105,7 +105,16 @@ $(function product(){
     table=$('.ytable').DataTable({
         processing:true,
         serverSide:true,
-        ajax:"{{ route('product.index') }}",
+        seaching:true,
+        ajax:{
+            url: "{{ route('product.index') }}",
+            data: function(e){
+                e.category_id = $("#category_id").val();
+                e.brand_id = $("#brand_id").val();
+                e.warehouse = $("#warehouse").val();
+                e.status = $("#status").val();
+            }
+        },
         columns:[
             {data:'DT_RowIndex',name:'DT_RowIndex'},
             {data:'thumbnail',name:'thumbnail'},

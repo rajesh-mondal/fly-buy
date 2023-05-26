@@ -21,21 +21,35 @@ class ProductController extends Controller
     public function index(Request $request){
         if($request->ajax()){
             $imgurl = 'files/product';
-            $data = Product::latest()->get();
+            $product = "";
 
-            return DataTables::of($data)
+            $query = DB::table('products')->leftJoin('categories','products.category_id','categories.id')
+                ->leftJoin('subcategories','products.subcategory_id','subcategories.id')
+                ->leftJoin('brands','products.brand_id','brands.id');
+
+                if($request->category_id){
+                    $query->where('products.category_id', $request->category_id);
+                }
+                if($request->brand_id){
+                    $query->where('products.brand_id', $request->brand_id);
+                }
+                if($request->warehouse){
+                    $query->where('products.warehouse', $request->warehouse);
+                }
+                if($request->status==1){
+                    $query->where('products.status', 1);
+                }
+                if($request->status==0){
+                    $query->where('products.status', 0);
+                }
+
+            $product = $query->select('products.*','categories.category_name','subcategories.subcategory_name','brands.brand_name')
+                ->get();
+
+            return DataTables::of($product)
                 ->addIndexColumn()
                 ->editColumn('thumbnail',function($row) use ($imgurl) {
                     return '<img src="'.$imgurl.'/'.$row->thumbnail.'" height="30" width="30">';
-                })
-                ->editColumn('category_name',function($row){
-                    return $row->category->category_name;
-                })
-                ->editColumn('subcategory_name',function($row){
-                    return $row->subcategory->subcategory_name;
-                })
-                ->editColumn('brand_name',function($row){
-                    return $row->brand->brand_name;
                 })
                 ->editColumn('featured',function($row){
                     if ($row->featured==1) {
