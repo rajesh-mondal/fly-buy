@@ -142,6 +142,8 @@
                 </div>
             </div>
             
+            @yield('navbar')
+
         </header>
 
         @yield('content')
