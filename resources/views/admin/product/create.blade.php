@@ -198,6 +198,10 @@
                                     <input type="checkbox" name="today_deal" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
                                 </div>
                                 <div class="card p-4">
+                                    <h6>Product slider</h6>
+                                    <input type="checkbox" name="product_slider" value="1" data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
+                                </div>
+                                <div class="card p-4">
                                     <h6>Status</h6>
                                     <input type="checkbox" name="status" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
                                 </div>
