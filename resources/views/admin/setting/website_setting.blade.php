@@ -41,6 +41,7 @@
                                 <select class="form-control" name="currency" id="">
                                     <option value="৳" {{ ($setting->currency == '৳') ? 'selected': '' }}>BDT (৳)</option>
                                     <option value="$" {{ ($setting->currency == '$') ? 'selected': '' }}>USD ($)</option>
+                                    <option value="₹" {{ ($setting->currency == '₹') ? 'selected': '' }}>INR (₹)</option>
                                 </select>
                             </div>
                             <div class="form-group">
