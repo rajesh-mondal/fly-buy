@@ -113,7 +113,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::get('/create','ProductController@create')->name('product.create');
         Route::post('/store','ProductController@store')->name('product.store');
         Route::get('/delete/{id}','ProductController@destroy')->name('product.delete');
-        // Route::get('/edit/{id}','ProductController@edit');
+        Route::get('/edit/{id}','ProductController@edit')->name('product.edit');
         // Route::post('/update','ProductController@update')->name('pickup.point.update');
         //Feture Product Routes
         Route::get('/active-featured/{id}','ProductController@activefeatured');
