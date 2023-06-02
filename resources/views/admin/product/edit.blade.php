@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="code">Product code <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="code" {{ old('code') }} required>
+                                        <input type="text" class="form-control" name="code" value="{{ $product->code }}" required>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="subcategory_id">Category/Subcategory <span class="text-danger">*</span></label>
@@ -97,26 +97,26 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="unit">Unit <span class="text-danger">*</span></label>
-                                        <input type="text" name="unit" class="form-control" value="{{ old('unit') }}" required>
+                                        <input type="text" name="unit" class="form-control" value="{{ $product->unit }}" required>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="tags">Tags <span class="text-danger">*</span></label><br>
-                                        <input type="text" name="tags" class="form-control" value="{{ old('tags') }}" data-role="tagsinput" />
+                                        <input type="text" name="tags" class="form-control" value="{{ $product->tags }}" data-role="tagsinput" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-4">
                                         <label for="purchase_price">Purchase Price</label>
-                                        <input type="text" name="purchase_price" class="form-control" value="{{ old('purchase_price') }}">
+                                        <input type="text" name="purchase_price" class="form-control" value="{{ $product->purchase_price }}">
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="selling_price">Selling Price <span class="text-danger">*</span></label>
-                                        <input type="text" name="selling_price" class="form-control" value="{{ old('selling_price') }}" required>
+                                        <input type="text" name="selling_price" class="form-control" value="{{ $product->selling_price }}" required>
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="discount_price">Discount Price</label>
-                                        <input type="text" name="discount_price" class="form-control" value="{{ old('discount_price') }}">
+                                        <input type="text" name="discount_price" class="form-control" value="{{ $product->discount_price }}">
                                     </div>
                                 </div>
 
@@ -131,32 +131,32 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="stock_quantity">Stock</label>
-                                        <input type="text" name="stock_quantity" class="form-control" value="{{ old('stock_quantity') }}">
+                                        <input type="text" name="stock_quantity" class="form-control" value="{{ $product->stock_quantity }}">
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="color">Color</label><br>
-                                        <input type="text" name="color" class="form-control" value="{{ old('color') }}" data-role="tagsinput" />
+                                        <input type="text" name="color" class="form-control" value="{{ $product->color }}" data-role="tagsinput" />
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="size">Size</label><br>
-                                        <input type="text" name="size" class="form-control" value="{{ old('size') }}" data-role="tagsinput" />
+                                        <input type="text" name="size" class="form-control" value="{{ $product->size }}" data-role="tagsinput" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label for="description">Product Details</label><br>
-                                        <textarea class="form-control textarea" name="description">{{ old('description') }}</textarea>
+                                        <textarea class="form-control textarea" name="description">{{ $product->description }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label for="video">Video Embed Code</label><br>
-                                        <textarea class="form-control" name="video">{{ old('video') }}</textarea>
+                                        <textarea class="form-control" name="video">{{ $product->video }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -191,19 +191,19 @@
 
                                 <div class="card p-4">
                                     <h6>Featured Product</h6>
-                                    <input type="checkbox" name="featured" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                                    <input type="checkbox" name="featured" value="1" @if($product->featured==1) checked @endif data-bootstrap-switch data-off-color="danger" data-on-color="success">
                                 </div>
                                 <div class="card p-4">
                                     <h6>Today Deal</h6>
-                                    <input type="checkbox" name="today_deal" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
+                                    <input type="checkbox" name="today_deal" value="1" @if($product->today_deal==1) checked @endif data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
                                 </div>
                                 <div class="card p-4">
                                     <h6>Product slider</h6>
-                                    <input type="checkbox" name="product_slider" value="1" data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
+                                    <input type="checkbox" name="product_slider" value="1" @if($product->product_slider==1) checked @endif data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
                                 </div>
                                 <div class="card p-4">
                                     <h6>Status</h6>
-                                    <input type="checkbox" name="status" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
+                                    <input type="checkbox" name="status" value="1" @if($product->status==1) checked @endif checked data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
                                 </div>
                             </div>
                             <!-- /.card-body -->
