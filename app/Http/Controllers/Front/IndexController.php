@@ -10,9 +10,16 @@ use DB;
 
 class IndexController extends Controller
 {
+    //root page
     public function index(){
         $category = DB::table('categories')->get();
         $banner_product = Product::where('product_slider', 1)->latest()->first();
         return view('frontend.index', compact('category','banner_product'));
+    }
+
+    //single product page calling method
+    public function productDetails($slug){
+        $product = Product::where('slug',$slug)->first();
+        return view('frontend.product_details', compact('product'));
     }
 }

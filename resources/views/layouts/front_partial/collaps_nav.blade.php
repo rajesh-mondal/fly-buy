@@ -1,3 +1,7 @@
+@php
+    $category = DB::table('categories')->orderBy('category_name','ASC')->get();
+@endphp
+
 <nav class="main_nav">
     <div class="container">
         <div class="row">
@@ -11,62 +15,31 @@
                             <div class="cat_menu_text">categories</div>
                         </div>
                         <ul class="cat_menu">
-                            <li>
-                                <a href="#">Computers & Laptops
-                                    <i class="fas fa-chevron-right ml-auto"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li class="hassubs">
-                                <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                                <ul>
-                                    <li class="hassubs">
-                                        <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                        <ul>
-                                            <li>
-                                                <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
+                            @foreach ($category as $row)
+                                @php
+                                    $subcategory = DB::table('subcategories')->where('category_id', $row->id)->get();
+                                @endphp
+                                <li class="hassubs">
+                                    <a href="#">{{ $row->category_name }}<i class="fas fa-chevron-right"></i></a>
+                                    <ul>
+                                        @foreach ($subcategory as $row)
+                                            <li class="hassubs">
+                                                @php
+                                                    $childcategory = DB::table('childcategories')->where('subcategory_id', $row->id)->get();
+                                                @endphp
+                                                <a href="#">{{ $row->subcategory_name }}<i class="fas fa-chevron-right"></i></a>
+                                                <ul>
+                                                    @foreach ($childcategory as $row)
+                                                        <li>
+                                                            <a href="#">{{ $row->childcategory_name }}<i class="fas fa-chevron-right"></i></a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
                                             </li>
-                                            <li>
-                                                <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">Gadgets<i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">Accessories<i class="fas fa-chevron-right"></i></a>
-                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 

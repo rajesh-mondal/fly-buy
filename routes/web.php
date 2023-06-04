@@ -20,5 +20,6 @@ Route::get( '/home', [App\Http\Controllers\HomeController::class, 'index'] )->na
 //Frontend All Routes
 Route::group(['namespace'=>'App\Http\Controllers\Front'], function(){
     Route::get('/','IndexController@index');
+    Route::get('/product-details/{slug}','IndexController@productDetails')->name('product.details');
 });
 
