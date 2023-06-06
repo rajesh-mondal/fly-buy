@@ -156,7 +156,8 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label for="video">Video Embed Code</label><br>
-                                        <textarea class="form-control" name="video">{{ old('video') }}</textarea>
+                                        <input class="form-control" name="video" value="{{ old('video') }}" placeholder="Only Code after embed word">
+                                        <small class="text-danger">Only code after embed word</small>
                                     </div>
                                 </div>
                             </div>
