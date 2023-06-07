@@ -201,7 +201,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="review">Write Your Review</label>
-                                            <select class="form-control" name="review" style="width:200px; margin-left: -2px;">
+                                            <select class="custom-select form-control-sm" name="review" style="min-width: 120px;">
                                                 <option disabled selected>Select Your Review</option>
                                                 <option value="1">1 Star</option>
                                                 <option value="2">2 Star</option>

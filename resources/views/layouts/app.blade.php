@@ -29,9 +29,7 @@
 
 <body>
     <div class="super_container">
-
         <header class="header">
-
             <div class="top_bar">
                 <div class="container">
                     <div class="row">
