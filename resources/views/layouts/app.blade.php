@@ -37,8 +37,9 @@
                     <div class="row">
                         <div class="col d-flex flex-row">
                             <div class="top_bar_contact_item">
-                                <div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+38 068 005
-                                3570
+                                <div class="top_bar_icon">
+                                    <img src="images/phone.png" alt="">
+                                </div>+38 068 005 3570
                             </div>
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="images/mail.png" alt="">
@@ -46,17 +47,50 @@
                                 </div>
                             </div>
                             <div class="top_bar_content ml-auto">
+                                
+                                @if(Auth::check())
                                 <div class="top_bar_menu">
                                     <ul class="standard_dropdown top_bar_dropdown">
                                         <li>
-                                            <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">English</a></li>
-                                                <li><a href="#">Bangla</a></li>
+                                            <a href="#">{{ Auth::user()->name }}<i class="fas fa-chevron-down"></i></a>
+                                            <ul style="width:300px;">
+                                                <li><a href="{{ route('home') }}">Profile</a></li>
+                                                <li><a href="#">Setting</a></li>
+                                                <li><a href="#">Order List</a></li>
+                                                <li><a href="{{ route('customer.logout') }}">Logout</a></li>
                                             </ul>
                                         </li>
+                                    </ul>
+                                </div>
+                                @endif
+
+                                @guest
+                                <div class="top_bar_menu">
+                                    <ul class="standard_dropdown top_bar_dropdown">
                                         <li>
-                                            <a href="#">Currency<i class="fas fa-chevron-down"></i></a>
+                                            <a href="#">Login<i class="fas fa-chevron-down"></i></a>
+                                            <ul style="width:300px; padding:10px;">
+                                                <br>
+                                                <div>
+                                                    <form action="{{ route('login') }}" method="post">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <label>Email Address</label>
+                                                            <input type="email" class="form-control" name="email" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Password</label>
+                                                            <input type="password" class="form-control" name="password" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-sm btn-info">Login</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </ul>  
+                                        </li>
+                                        <li>
+                                            <a href="#">Register<i class="fas fa-chevron-down"></i></a>
                                             <ul>
                                                 <li><a href="#">BDT (৳)</a></li>
                                                 <li><a href="#">USD ($)</a></li>
@@ -64,11 +98,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="top_bar_user">
-                                    <div class="user_icon"><img src="images/user.svg" alt=""></div>
-                                    <div><a href="#">Register</a></div>
-                                    <div><a href="#">Sign in</a></div>
-                                </div>
+                                @endguest
                             </div>
                         </div>
                     </div>
