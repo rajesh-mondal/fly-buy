@@ -220,6 +220,52 @@
                                     </form>
                                 </div>
                             </div>
+                            <br>
+                            <!-- All reviews of this product -->
+                            <strong>All review of {{ $product->name }}</strong><hr>
+                            <div class="row">
+                                @foreach ($review as $row)
+                                    <div class="card col-lg-5 m-2">
+                                        <div class="card-header">
+                                            {{ $row->user->name }} ( {{ date('d F , Y'), strtotime($row->review_date) }} )
+                                        </div>
+                                        <div class="card-body">
+                                            {{ $row->review }}
+                                            @if( $row->rating==5 )
+                                                <div>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                </div>
+                                            @elseif( $row->rating==4 )
+                                                <div>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                    <span class="fa fa-star checked text-warning"></span>
+                                                </div>
+                                            @elseif( $row->rating==3 )
+                                                <div>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                </div>
+                                            @elseif( $row->rating==2 )
+                                                <div>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                </div>
+                                            @elseif( $row->rating==1 )
+                                                <div>
+                                                    <span class="fa fa-star checked"></span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,13 @@ class ReviewController extends Controller {
             'review' => 'required',
         ] );
 
+        $check = DB::table( 'reviews' )->where( 'user_id', Auth::id() )->where( 'product_id', $request->product_id )->first();
+
+        if ( $check ) {
+            $notification = array( 'message' => 'Allready you have a review with this product!', 'alert-type' => 'error' );
+            return redirect()->back()->with( $notification );
+        }
+
         $data = array();
         $data['user_id'] = Auth::id();
         $data['product_id'] = $request->product_id;
