@@ -194,14 +194,16 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <form action="">
+                                    <form action="{{ route('store.review') }}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="details">Write Your Review</label>
-                                            <textarea type="text" class="form-control" required></textarea>
+                                            <textarea type="text" class="form-control" name="review" required></textarea>
                                         </div>
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <div class="form-group">
                                             <label for="review">Write Your Review</label>
-                                            <select class="custom-select form-control-sm" name="review" style="min-width: 120px;">
+                                            <select class="custom-select form-control-sm" name="rating" style="min-width: 120px;">
                                                 <option disabled selected>Select Your Review</option>
                                                 <option value="1">1 Star</option>
                                                 <option value="2">2 Star</option>
@@ -210,7 +212,11 @@
                                                 <option value="5">5 Star</option>
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-sm btn-info"><span class="fa fa-star"></span> Submit Review</button>
+                                        @if(Auth::check())
+                                            <button type="submit" class="btn btn-sm btn-info"><span class="fa fa-star"></span> Submit Review</button>
+                                        @else
+                                            <p>Please at first login to your account fot submit a review</p>
+                                        @endif
                                     </form>
                                 </div>
                             </div>
