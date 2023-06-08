@@ -136,8 +136,12 @@
                                     </div>
                                 </div>
                                 <div class="button_container">
-                                    <button type="button" class="button cart_button">Add to Cart</button>
-                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-success" type="submit">Add to Cart</button>
+                                            <a href="{{ route('add.wishlist', $product->id) }}" class="btn btn-primary" type="button">Add to Wishlist</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>

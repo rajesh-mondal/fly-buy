@@ -39,4 +39,20 @@ class ReviewController extends Controller {
         $notification = array( 'message' => 'Thnaks for your review!', 'alert-type' => 'success' );
         return redirect()->back()->with( $notification );
     }
+
+    //add wishlist
+    public function addWishlist( $id ) {
+        $check = DB::table( 'wishlists' )->where( 'product_id', $id )->where( 'user_id', Auth::id() )->first();
+        if ( $check ) {
+            $notification = array( 'message' => 'Allready have it on your wishlist!', 'alert-type' => 'error' );
+            return redirect()->back()->with( $notification );
+        } else {
+            $data = array();
+            $data['product_id'] = $id;
+            $data['user_id'] = Auth::id();
+            DB::table( 'wishlists' )->insert( $data );
+            $notification = array( 'message' => 'Product added on wishlist!', 'alert-type' => 'success' );
+            return redirect()->back()->with( $notification );
+        }
+    }
 }

@@ -19,10 +19,7 @@ Auth::routes();
 Route::get('/login', function(){
     return redirect()->to('/');
 })->name('login');
-//Register
-Route::get('/register', function(){
-    return redirect()->to('/');
-})->name('register');
+
 Route::get( '/home', [App\Http\Controllers\HomeController::class, 'index'] )->name( 'home' );
 Route::get( '/customer/logout', [App\Http\Controllers\HomeController::class, 'logout'] )->name( 'customer.logout' );
 
@@ -33,5 +30,6 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'], function(){
 
     //review
     Route::post('/store/review','ReviewController@store')->name('store.review');
+    Route::get('/add/wishlist{id}','ReviewController@addWishlist')->name('add.wishlist');
 });
 
