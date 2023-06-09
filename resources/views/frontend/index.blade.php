@@ -244,38 +244,37 @@
                                 <div class="featured_slider slider">
 
                                     @foreach ($featured as $row)
-                                    <div class="featured_slider_item">
-                                        <div class="border_active"></div>
-                                        <div
-                                            class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                                <img src="{{ asset('files/product/'.$row->thumbnail) }}" alt="{{ $row->name }}">
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="product_price discount">$225<span>$300</span></div>
-                                                <div class="product_name">
-                                                    <div>
-                                                        <a href="{{ route('product.details', $row->slug) }}">{{ substr($row->name, 0, 20) }}..</a>
+                                        <div class="featured_slider_item">
+                                            <div class="border_active"></div>
+                                            <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                                <div class="product_image d-flex flex-column align-items-center justify-content-center">
+                                                    <img src="{{ asset('files/product/'.$row->thumbnail) }}" alt="{{ $row->name }}">
+                                                </div>
+                                                <div class="product_content">
+                                                    <div class="product_price discount">$225<span>$300</span></div>
+                                                    <div class="product_name">
+                                                        <div>
+                                                            <a href="{{ route('product.details', $row->slug) }}">{{ substr($row->name, 0, 20) }}..</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_extras">
+                                                        <div class="product_color">
+                                                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">Quick view</a>
+                                                        </div>
+                                                        <button class="product_cart_button">Add to Cart</button>
                                                     </div>
                                                 </div>
-                                                <div class="product_extras">
-                                                    <div class="product_color">
-                                                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter">Quick view</a>
+                                                <a href="{{ route('add.wishlist', $row->id) }}">
+                                                    <div class="product_fav">
+                                                        <i class="fas fa-heart"></i>
                                                     </div>
-                                                    <button class="product_cart_button">Add to Cart</button>
-                                                </div>
+                                                </a>
+                                                <ul class="product_marks">
+                                                    <li class="product_mark product_discount">new</li>
+                                                    {{-- <li class="product_mark product_new">new</li> --}}
+                                                </ul>
                                             </div>
-                                            <a href="{{ route('add.wishlist', $row->id) }}">
-                                                <div class="product_fav">
-                                                    <i class="fas fa-heart"></i>
-                                                </div>
-                                            </a>
-                                            <ul class="product_marks">
-                                                <li class="product_mark product_discount">new</li>
-                                                {{-- <li class="product_mark product_new">new</li> --}}
-                                            </ul>
                                         </div>
-                                    </div>
                                     @endforeach
 
                                 </div>
