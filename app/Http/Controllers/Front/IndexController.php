@@ -14,7 +14,8 @@ class IndexController extends Controller {
     public function index() {
         $category = DB::table( 'categories' )->get();
         $banner_product = Product::where( 'product_slider', 1 )->latest()->first();
-        return view( 'frontend.index', compact( 'category', 'banner_product' ) );
+        $featured = Product::where( 'featured', 1 )->orderBy( 'id', 'DESC')->limit(8)->get();
+        return view( 'frontend.index', compact( 'category', 'banner_product', 'featured' ) );
     }
 
     //single product page calling method
