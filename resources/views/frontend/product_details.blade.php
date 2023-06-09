@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_responsive.css') }}">
     @include('layouts.front_partial.collaps_nav')
 
     <style>
@@ -472,4 +474,7 @@
             </div>
         </div>
     </div>
+
+<script src="{{ asset('frontend/js/product_custom.js') }}"></script>
+
 @endsection
