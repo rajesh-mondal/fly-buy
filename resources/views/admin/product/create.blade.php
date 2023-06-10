@@ -203,6 +203,10 @@
                                     <input type="checkbox" name="product_slider" value="1" data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
                                 </div>
                                 <div class="card p-4">
+                                    <h6>Trendy Product</h6>
+                                    <input type="checkbox" name="trendy" value="1" data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
+                                </div>
+                                <div class="card p-4">
                                     <h6>Status</h6>
                                     <input type="checkbox" name="status" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" id="">
                                 </div>
