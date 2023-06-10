@@ -13,8 +13,8 @@ class IndexController extends Controller {
     //root page
     public function index() {
         $category = DB::table( 'categories' )->get();
-        $banner_product = Product::where( 'product_slider', 1 )->latest()->first();
-        $featured = Product::where( 'featured', 1 )->orderBy( 'id', 'DESC')->limit(8)->get();
+        $banner_product = Product::where( 'status', 1 )->where( 'product_slider', 1 )->latest()->first();
+        $featured = Product::where( 'status', 1 )->where( 'featured', 1 )->orderBy( 'id', 'DESC')->limit(8)->get();
         $popular_product = Product::where( 'status', 1 )->orderBy( 'product_views', 'DESC')->limit(8)->get();
         return view( 'frontend.index', compact( 'category', 'banner_product', 'featured', 'popular_product' ) );
     }

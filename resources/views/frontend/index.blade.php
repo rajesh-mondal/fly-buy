@@ -252,7 +252,13 @@
                                                     <img src="{{ asset('files/product/'.$row->thumbnail) }}" alt="{{ $row->name }}">
                                                 </div>
                                                 <div class="product_content">
-                                                    <div class="product_price discount">$225<span>$300</span></div>
+                                                    
+                                                    @if($row->discount_price==NULL)
+                                                        <div class="product_price discount">{{ $setting->currency }}{{ $row->selling_price }}</div>
+                                                    @else
+                                                        <div class="product_price discount">{{ $setting->currency }}{{ $row->discount_price }}<span>{{ $setting->currency }}{{ $row->selling_price }}</span></div>
+                                                    @endif
+
                                                     <div class="product_name">
                                                         <div>
                                                             <a href="{{ route('product.details', $row->slug) }}">{{ substr($row->name, 0, 20) }}..</a>
@@ -300,7 +306,7 @@
                                                     @else
                                                         <div class="product_price discount">{{ $setting->currency }}{{ $row->discount_price }}<span>{{ $setting->currency }}{{ $row->selling_price }}</span></div>
                                                     @endif
-                                                    
+
                                                     <div class="product_name">
                                                         <div>
                                                             <a href="{{ route('product.details', $row->slug) }}">{{ substr($row->name, 0, 20) }}..</a>
