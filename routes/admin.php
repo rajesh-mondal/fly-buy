@@ -98,6 +98,15 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::post('/update','CouponController@update')->name('coupon.update');
     });
 
+    //Campaign Routes
+    Route::group(['prefix'=>'campaign'], function(){
+        Route::get('/','CampaignController@index')->name('campaign.index');
+        // Route::post('/store','CampaignController@store')->name('campaign.store');
+        // Route::delete('/delete/{id}','CampaignController@destroy')->name('campaign.delete');
+        // Route::get('/edit/{id}','CampaignController@edit');
+        // Route::post('/update','CampaignController@update')->name('campaign.update');
+    });
+
     //Pickup Point Routes
     Route::group(['prefix'=>'pickup-point'], function(){
         Route::get('/','PickupController@index')->name('pickuppoint.index');

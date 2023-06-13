@@ -266,7 +266,7 @@
                                                     </div>
                                                     <div class="product_extras">
                                                         <div class="product_color">
-                                                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">Quick view</a>
+                                                            <a href="#" class="quick_view" id="{{ $row->id }}" data-toggle="modal" data-target="#exampleModalCenter">Quick view</a>
                                                         </div>
                                                         <button class="product_cart_button">Add to Cart</button>
                                                     </div>
@@ -314,7 +314,7 @@
                                                     </div>
                                                     <div class="product_extras">
                                                         <div class="product_color">
-                                                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">Quick view</a>
+                                                            <a href="#" class="quick_view" id="{{ $row->id }}" data-toggle="modal" data-target="#exampleModalCenter">Quick view</a>
                                                         </div>
                                                         <button class="product_cart_button">Add to Cart</button>
                                                     </div>
@@ -3543,5 +3543,4 @@
             </div>
         </div>
     </div>
-
 @endsection
