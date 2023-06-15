@@ -85,4 +85,42 @@ class CampaignController extends Controller
         $notification = array('message' => 'Campaign Deleted!', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    // edit method
+    public function edit($id){
+        $data = DB::table('campaigns')->where('id',$id)->first();
+        return view('admin.offer.campaign.edit', compact('data'));
+    }
+
+    // update method
+    public function update(Request $request){
+        $slug = Str::slug($request->title, '-');
+
+        $data = array();
+        $data['title'] = $request->title;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['status'] = $request->status;
+        $data['discount'] = $request->discount;
+
+        if($request->image){
+            if(File::exists($request->old_image)){
+                unlink($request->old_image);
+            }
+            $photo = $request->image;
+            $photoname = $slug.'.'.$photo->getClientOriginalExtension();
+            $photo->move('files/campaign/',$photoname); 
+            $data['image'] = 'files/campaign/'.$photoname;
+            DB::table('campaigns')->where('id', $request->id)->update($data);
+
+            $notification = array('message' => 'Campaign Updated!', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        }else{
+            $data['image'] = 'files/campaign/'.$request->old_image;
+            DB::table('campaigns')->where('id', $request->id)->update($data);
+            
+            $notification = array('message' => 'Campaign Updated!', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        }
+    }
 }

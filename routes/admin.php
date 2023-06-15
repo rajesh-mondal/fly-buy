@@ -103,8 +103,8 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::get('/','CampaignController@index')->name('campaign.index');
         Route::post('/store','CampaignController@store')->name('campaign.store');
         Route::get('/delete/{id}','CampaignController@destroy')->name('campaign.delete');
-        // Route::get('/edit/{id}','CampaignController@edit');
-        // Route::post('/update','CampaignController@update')->name('campaign.update');
+        Route::get('/edit/{id}','CampaignController@edit');
+        Route::post('/update','CampaignController@update')->name('campaign.update');
     });
 
     //Pickup Point Routes

@@ -120,7 +120,7 @@
 
 <!-- Campaign Edit Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit Campaign</h5>
@@ -171,7 +171,7 @@
 
   $('body').on('click','.edit',function(){
     let id=$(this).data('id');
-    $.get("brand/edit/"+id, function(data){
+    $.get("campaign/edit/"+id, function(data){
       $("#modal_body").html(data);
     });
   });
