@@ -64,7 +64,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('brand.store') }}" method="Post" enctype="multipart/form-data" id="add-form">
+      <form action="{{ route('campaign.store') }}" method="Post" enctype="multipart/form-data" id="add-form">
       @csrf
         <div class="modal-body">           
             <div class="form-group">
