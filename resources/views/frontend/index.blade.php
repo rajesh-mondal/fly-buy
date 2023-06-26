@@ -702,7 +702,7 @@
     </div>
 
     <div class="trends">
-        <div class="trends_background" style="background-image:url(images/trends_background.jpg)"></div>
+        <div class="trends_background" style="background-image:url( {{asset('frontend/images/trends_background.jpg') }} )"></div>
         <div class="trends_overlay"></div>
         <div class="container">
             <div class="row">
@@ -781,7 +781,7 @@
                             <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
                                     <div>
-                                        <div class="review_image"><img src="images/review_1.jpg"
+                                        <div class="review_image"><img src="{{ asset('frontend/images/review_1.jpg')}}"
                                                 alt=""></div>
                                     </div>
                                     <div class="review_content">
@@ -803,7 +803,7 @@
                             <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
                                     <div>
-                                        <div class="review_image"><img src="images/review_2.jpg"
+                                        <div class="review_image"><img src="{{ asset('frontend/images/review_2.jpg')}}"
                                                 alt=""></div>
                                     </div>
                                     <div class="review_content">
@@ -825,7 +825,7 @@
                             <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
                                     <div>
-                                        <div class="review_image"><img src="images/review_3.jpg"
+                                        <div class="review_image"><img src="{{ asset('frontend/images/review_3.jpg')}}"
                                                 alt=""></div>
                                     </div>
                                     <div class="review_content">
@@ -847,7 +847,7 @@
                             <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
                                     <div>
-                                        <div class="review_image"><img src="images/review_1.jpg"
+                                        <div class="review_image"><img src="{{ asset('frontend/images/review_1.jpg')}}"
                                                 alt=""></div>
                                     </div>
                                     <div class="review_content">
@@ -869,7 +869,7 @@
                             <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
                                     <div>
-                                        <div class="review_image"><img src="images/review_2.jpg"
+                                        <div class="review_image"><img src="{{ asset('frontend/images/review_2.jpg')}}"
                                                 alt=""></div>
                                     </div>
                                     <div class="review_content">
@@ -891,7 +891,7 @@
                             <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
                                     <div>
-                                        <div class="review_image"><img src="images/review_3.jpg"
+                                        <div class="review_image"><img src="{{ asset('frontend/images/review_3.jpg')}}"
                                                 alt=""></div>
                                     </div>
                                     <div class="review_content">
@@ -935,7 +935,7 @@
                             <div class="owl-item">
                                 <div
                                     class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_1.jpg" alt="">
+                                    <div class="viewed_image"><img src="{{ asset('frontend/images/view_1.jpg')}}" alt="">
                                     </div>
                                     <div class="viewed_content text-center">
                                         <div class="viewed_price">$225<span>$300</span></div>
@@ -951,7 +951,7 @@
                             <div class="owl-item">
                                 <div
                                     class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_2.jpg" alt="">
+                                    <div class="viewed_image"><img src="{{ asset('frontend/images/view_2.jpg')}}" alt="">
                                     </div>
                                     <div class="viewed_content text-center">
                                         <div class="viewed_price">$379</div>
@@ -967,7 +967,7 @@
                             <div class="owl-item">
                                 <div
                                     class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_3.jpg" alt="">
+                                    <div class="viewed_image"><img src="{{ asset('frontend/images/view_3.jpg')}}" alt="">
                                     </div>
                                     <div class="viewed_content text-center">
                                         <div class="viewed_price">$225</div>
@@ -983,7 +983,7 @@
                             <div class="owl-item">
                                 <div
                                     class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_4.jpg" alt="">
+                                    <div class="viewed_image"><img src="{{ asset('frontend/images/view_4.jpg')}}" alt="">
                                     </div>
                                     <div class="viewed_content text-center">
                                         <div class="viewed_price">$379</div>
@@ -999,7 +999,7 @@
                             <div class="owl-item">
                                 <div
                                     class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_5.jpg" alt="">
+                                    <div class="viewed_image"><img src="{{ asset('frontend/images/view_5.jpg')}}" alt="">
                                     </div>
                                     <div class="viewed_content text-center">
                                         <div class="viewed_price">$225<span>$300</span></div>
@@ -1015,7 +1015,7 @@
                             <div class="owl-item">
                                 <div
                                     class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_6.jpg" alt="">
+                                    <div class="viewed_image"><img src="{{ asset('frontend/images/view_6.jpg')}}" alt="">
                                     </div>
                                     <div class="viewed_content text-center">
                                         <div class="viewed_price">$375</div>
@@ -1034,6 +1034,7 @@
         </div>
     </div>
 
+    <!-- brands -->
     <div class="brands">
         <div class="container">
             <div class="row">
@@ -1043,35 +1044,35 @@
                         <div class="owl-carousel owl-theme brands_slider">
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_1.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_1.jpg')}}" alt=""></div>
                             </div>
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_2.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_2.jpg')}}" alt=""></div>
                             </div>
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_3.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_3.jpg')}}" alt=""></div>
                             </div>
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_4.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_4.jpg')}}" alt=""></div>
                             </div>
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_5.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_5.jpg')}}" alt=""></div>
                             </div>
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_6.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_6.jpg')}}" alt=""></div>
                             </div>
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_7.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_7.jpg')}}" alt=""></div>
                             </div>
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="images/brands_8.jpg" alt=""></div>
+                                        src="{{ asset('frontend/images/brands_8.jpg')}}" alt=""></div>
                             </div>
                         </div>
 
@@ -1090,7 +1091,7 @@
                     <div
                         class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
                         <div class="newsletter_title_container">
-                            <div class="newsletter_icon"><img src="images/send.png" alt=""></div>
+                            <div class="newsletter_icon"><img src="{{ asset('frontend/images/send.png')}}" alt=""></div>
                             <div class="newsletter_title">Sign up for Newsletter</div>
                             <div class="newsletter_text">
                                 <p>...and receive %20 coupon for first shopping.</p>
