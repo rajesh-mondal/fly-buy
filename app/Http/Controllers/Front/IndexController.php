@@ -17,8 +17,8 @@ class IndexController extends Controller {
         $featured = Product::where( 'status', 1 )->where( 'featured', 1 )->orderBy( 'id', 'DESC')->limit(16)->get();
         $popular_product = Product::where( 'status', 1 )->orderBy( 'product_views', 'DESC')->limit(16)->get();
         $trendy_product = Product::where( 'status', 1 )->where( 'trendy', 1 )->orderBy( 'id', 'DESC')->limit(8)->get();
-        // $home_category = DB::table( 'categories' )->where('home_page', 1)->orderBy('category_name','ASC')->get();
-        return view( 'frontend.index', compact( 'category', 'banner_product', 'featured', 'popular_product', 'trendy_product' ) );
+        $home_category = DB::table( 'categories' )->where('home_page', 1)->orderBy('category_name','ASC')->get();
+        return view( 'frontend.index', compact( 'category', 'banner_product', 'featured', 'popular_product', 'trendy_product', 'home_category' ) );
     }
 
     //single product page calling method
