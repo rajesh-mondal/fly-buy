@@ -363,50 +363,17 @@
                     <div class="popular_categories_slider_container">
                         <div class="owl-carousel owl-theme popular_categories_slider">
 
-                            <div class="owl-item">
-                                <div
-                                    class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                    <div class="popular_category_image"><img src="{{ asset('frontend/images/popular_1.png') }}"
-                                            alt=""></div>
-                                    <div class="popular_category_text">Smartphones & Tablets</div>
+                            @foreach ($category as $row)
+                                <div class="owl-item">
+                                    <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+                                        <div class="popular_category_image"><img src="{{ asset($row->icon) }}" alt="{{ $row->category_name }}"></div>
+                                        <div class="popular_category_text">
+                                            <a href="">{{ $row->category_name }}</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
 
-                            <div class="owl-item">
-                                <div
-                                    class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                    <div class="popular_category_image"><img src="{{ asset('frontend/images/popular_2.png') }}"
-                                            alt=""></div>
-                                    <div class="popular_category_text">Computers & Laptops</div>
-                                </div>
-                            </div>
-
-                            <div class="owl-item">
-                                <div
-                                    class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                    <div class="popular_category_image"><img src="{{ asset('frontend/images/popular_3.png') }}"
-                                            alt=""></div>
-                                    <div class="popular_category_text">Gadgets</div>
-                                </div>
-                            </div>
-
-                            <div class="owl-item">
-                                <div
-                                    class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                    <div class="popular_category_image"><img src="{{ asset('frontend/images/popular_4.png') }}"
-                                            alt=""></div>
-                                    <div class="popular_category_text">Video Games & Consoles</div>
-                                </div>
-                            </div>
-
-                            <div class="owl-item">
-                                <div
-                                    class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                    <div class="popular_category_image"><img src="{{ asset('frontend/images/popular_5.png') }}"
-                                            alt=""></div>
-                                    <div class="popular_category_text">Accessories</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
