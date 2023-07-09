@@ -27,6 +27,12 @@ class IndexController extends Controller {
         Product::where( 'slug', $slug )->increment( 'product_views' );
         $related_product = DB::table( 'products' )->where( 'subcategory_id', $product->subcategory_id )->orderBy( 'id', 'DESC' )->take( 10 )->get();
         $review = Review::where( 'product_id', $product->id )->take( 6 )->get();
-        return view( 'frontend.product_details', compact( 'product', 'related_product', 'review' ) );
+        return view( 'frontend.product.product_details', compact( 'product', 'related_product', 'review' ) );
+    }
+
+    //prodduct quick view
+    public function productQuickView( $id ){
+        $product = Product::where( 'id', $id )->first();
+        return view( 'frontend.product.quick_view', compact('product') );
     }
 }

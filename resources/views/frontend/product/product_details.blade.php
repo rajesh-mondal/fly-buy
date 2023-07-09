@@ -102,10 +102,10 @@
                                     <div class="row">
                                         @isset( $product->size )
                                         <div class="col-lg-6">
-                                            <label>Pick Size: </label>
-                                            <select class="form-control form-control-sm" name="size">
+                                            <label>Pick Size: </label><br>
+                                            <select class="custom-select form-control-sm" name="size" style="min-width: 120px; margin-left: -4px;">
                                                 @foreach ($sizes as $size)
-                                                    <option>{{ $size }}</option>
+                                                    <option value="{{ $size }}">{{ $size }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -113,10 +113,10 @@
 
                                         @isset( $product->color )
                                         <div class="col-lg-6">
-                                            <label>Pick Color: </label>
-                                            <select class="form-control form-control-sm" name="color">
+                                            <label>Pick Color: </label><br>
+                                            <select class="custom-select form-control-sm" name="color" style="min-width: 120px;">
                                                 @foreach ($colors as $color)
-                                                    <option>{{ $color }}</option>
+                                                    <option value="{{ $color }}">{{ $color }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

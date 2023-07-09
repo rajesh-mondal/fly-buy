@@ -27,6 +27,7 @@ Route::get( '/customer/logout', [App\Http\Controllers\HomeController::class, 'lo
 Route::group(['namespace'=>'App\Http\Controllers\Front'], function(){
     Route::get('/','IndexController@index');
     Route::get('/product-details/{slug}','IndexController@productDetails')->name('product.details');
+    Route::get('/product-quick-view/{id}','IndexController@productQuickView');
 
     //review
     Route::post('/store/review','ReviewController@store')->name('store.review');

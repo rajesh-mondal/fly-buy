@@ -288,7 +288,7 @@
                                 <div class="featured_slider_dots_cover"></div>
                             </div>
 
-                            <!-- Most opular product panel -->
+                            <!-- Most popular product panel -->
                             <div class="product_panel panel">
                                 <div class="featured_slider slider">
 
@@ -1117,64 +1117,29 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="modal-body">
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="">
-                                            <img src="{{ asset('frontend/images/single_2.jpg') }}" alt="" height="100%" width="100%">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <h3>This is main product title</h3>
-                                        <p>Categoryname > subcategoryname</p>
-                                        <p>Brand: Brandname</p>
-                                        <div class="">Price: 120$</div><br>
-                                        <div class="order-info d-flex flex-row">
-                                            <form action="#">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-lg-5">
-                                                            <label class="ml-2">Pick size:</label>
-                                                            <select class="custom-select form-control-sm" name="size" style="min-width: 120px" >
-                                                                <option value="">Example</option>
-                                                                <option value="">Example</option>
-                                                                <option value="">Example</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-lg-5">
-                                                            <label class="ml-2">Pick Color:</label>
-                                                            <select class="custom-select form-control-sm" name="color" style="min-width: 120px" >
-                                                                <option value="">Example</option>
-                                                                <option value="">Example</option>
-                                                                <option value="">Example</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="button-container">
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-sm btn-outline-info" type="submit">Add to Cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body" id="quick_view_body">
+
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('click', '.quick_view', function(){
+            var id = $(this).attr('id');
+            $.ajax({
+                url: "{{ url("/product-quick-view/") }}/"+id,
+                type: 'get',
+                success: function(data){
+                    $("#quick_view_body").html(data);
+                }
+            });
+        });
+    </script>
+
 @endsection

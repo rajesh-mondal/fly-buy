@@ -292,7 +292,8 @@
         </div>
     </div>
     <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
-    <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    {{-- <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script> --}}
     <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
     <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/greensock/TweenMax.min.js') }}"></script>
