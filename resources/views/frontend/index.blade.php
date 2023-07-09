@@ -30,46 +30,15 @@
     <div class="characteristics">
         <div class="container">
             <div class="row">
-
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_1.png')}}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
+                @foreach ($brand as $row)
+                    <div class="col-lg-1 col-md-6 char_col" style="border: 1px solid grey; padding: 5px;">
+                        <div class="brands_item d-flex flex-column justify-content-center">
+                            <a href="#" title="{{ $row->brand_name }}">
+                                <img src="{{ asset($row->brand_logo)}}" alt="{{ $row->brand_name }}" height="100%" width="100%">
+                            </a>    
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_2.png')}}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_3.png')}}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_4.png')}}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -513,9 +482,8 @@
                                                             @else
                                                                 <div class="product_price discount">{{ $setting->currency }}{{ $row->discount_price }}<span>{{ $setting->currency }}{{ $row->selling_price }}</span></div>
                                                             @endif
-                                                            {{-- <div class="product_price">$225</div> --}}
                                                             <div class="product_name">
-                                                                <div><a href="#">{{ $row->name }}</a></div>
+                                                                <div><a href="{{ route('product.details', $row->slug) }}">{{ $row->name }}</a></div>
                                                             </div>
                                                             <div class="product_extras">
                                                                 <div class="product_color">
@@ -1040,44 +1008,66 @@
             <div class="row">
                 <div class="col">
                     <div class="brands_slider_container">
-
                         <div class="owl-carousel owl-theme brands_slider">
+                            @foreach ($brand as $row)
                             <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_1.jpg')}}" alt=""></div>
+                                <div class="brands_item d-flex flex-column justify-content-center">
+                                    <a href="#" title="{{ $row->brand_name }}">
+                                        <img src="{{ asset($row->brand_logo)}}" alt="{{ $row->brand_name }}" height="50" width="40">
+                                    </a>    
+                                </div>
                             </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_2.jpg')}}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_3.jpg')}}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_4.jpg')}}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_5.jpg')}}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_6.jpg')}}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_7.jpg')}}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_8.jpg')}}" alt=""></div>
-                            </div>
+                            @endforeach
                         </div>
-
                         <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
                         <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="characteristics">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 char_col">
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img src="{{ asset('frontend/images/char_1.png')}}" alt=""></div>
+                        <div class="char_content">
+                            <div class="char_title">Free Delivery</div>
+                            <div class="char_subtitle">from $50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 char_col">
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img src="{{ asset('frontend/images/char_2.png')}}" alt=""></div>
+                        <div class="char_content">
+                            <div class="char_title">Free Delivery</div>
+                            <div class="char_subtitle">from $50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 char_col">
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img src="{{ asset('frontend/images/char_3.png')}}" alt=""></div>
+                        <div class="char_content">
+                            <div class="char_title">Free Delivery</div>
+                            <div class="char_subtitle">from $50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 char_col">
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img src="{{ asset('frontend/images/char_4.png')}}" alt=""></div>
+                        <div class="char_content">
+                            <div class="char_title">Free Delivery</div>
+                            <div class="char_subtitle">from $50</div>
+                        </div>
                     </div>
                 </div>
             </div>

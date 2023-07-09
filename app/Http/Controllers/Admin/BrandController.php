@@ -23,6 +23,11 @@ class BrandController extends Controller
 
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->editColumn('front_page',function($row){
+                    if ($row->front_page==1) {
+                        return '<span class="badge badge-success">Home Page</span>';
+                    }
+                })
                 ->addColumn('action', function($row){
 
                     $actionbtn='<a href="#" class="btn btn-info btn-sm edit" data-id="'.$row->id.'" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></a>
@@ -30,7 +35,7 @@ class BrandController extends Controller
 
                     return $actionbtn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','front_page'])
                 ->make(true);
         }
         return view('admin.category.brand.index');
@@ -47,6 +52,7 @@ class BrandController extends Controller
         $data = array();
         $data['brand_name'] = $request->brand_name;
         $data['brand_slug'] = Str::slug($request->brand_name, '-');
+        $data['front_page'] = $request->front_page;
 
         $photo = $request->brand_logo;
         $photoname = $slug.'.'.$photo->getClientOriginalExtension();
@@ -73,6 +79,7 @@ class BrandController extends Controller
         $data = array();
         $data['brand_name'] = $request->brand_name;
         $data['brand_slug'] = Str::slug($request->brand_name, '-');
+        $data['front_page'] = $request->front_page;
 
         if($request->brand_logo){
             if(File::exists($request->old_logo)){
