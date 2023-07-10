@@ -16,11 +16,12 @@ class IndexController extends Controller {
         $brand = DB::table( 'brands' )->where( 'front_page', 1 )->limit(12)->get();
         $banner_product = Product::where( 'status', 1 )->where( 'product_slider', 1 )->latest()->first();
         $featured = Product::where( 'status', 1 )->where( 'featured', 1 )->orderBy( 'id', 'DESC')->limit(16)->get();
+        $today_deal = Product::where( 'status', 1 )->where( 'today_deal', 1 )->orderBy( 'id', 'DESC')->limit(6)->get();
         $popular_product = Product::where( 'status', 1 )->orderBy( 'product_views', 'DESC')->limit(16)->get();
         $trendy_product = Product::where( 'status', 1 )->where( 'trendy', 1 )->orderBy( 'id', 'DESC')->limit(8)->get();
         $random_product = Product::where( 'status', 1 )->inRandomOrder()->limit(16)->get();
         $home_category = DB::table( 'categories' )->where('home_page', 1)->orderBy('category_name','ASC')->get();
-        return view( 'frontend.index', compact( 'category', 'banner_product', 'featured', 'popular_product', 'trendy_product', 'home_category', 'brand', 'random_product' ) );
+        return view( 'frontend.index', compact( 'category', 'banner_product', 'featured', 'popular_product', 'trendy_product', 'home_category', 'brand', 'random_product', 'today_deal' ) );
     }
 
     //single product page calling method

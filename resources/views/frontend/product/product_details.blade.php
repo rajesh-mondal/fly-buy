@@ -32,11 +32,13 @@
                 <!-- Images -->
                 <div class="col-lg-1 order-lg-1 order-2">
                     <ul class="image_list">
-                        @foreach ($images as $key => $image)
-                        <li data-image="{{ asset('files/product/'.$image) }}">
-                            <img src="{{ asset('files/product/'.$image) }}" alt="">
-                        </li>
-                        @endforeach
+                        @isset($images)
+                            @foreach ($images as $key => $image)
+                                <li data-image="{{ asset('files/product/'.$image) }}">
+                                    <img src="{{ asset('files/product/'.$image) }}" alt="">
+                                </li>
+                            @endforeach
+                        @endisset
                     </ul>
                 </div>
 
