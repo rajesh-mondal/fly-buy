@@ -21,9 +21,19 @@
                     @else
                         <div class="product_price" style="margin-top: 0px;">Price: <del class="text-danger h6">{{ $setting->currency }}{{ $product->selling_price }}</del>{{ $setting->currency }}{{ $product->discount_price }}</div>
                     @endif
-                </div><br>
+                </div>
+                <br>
                 <div class="order-info d-flex flex-row">
-                    <form action="#">
+                    <form action="{{ route('add.to.cart.quickview') }}" method="post" id="add_cart_form">
+                        @csrf
+                        @method('PUT');
+                        {{-- Add to Cart Details --}}
+                        <input type="hidden" name="id" value="{{ $product->id }}">
+                        @if($product->discount_price==NULL)
+                            <input type="hidden" name="price" value="{{ $product->selling_price }}">
+                        @else
+                            <input type="hidden" name="price" value="{{ $product->discount_price }}">
+                        @endif
                         <div class="form-group">
                             <div class="row">
                                 @isset( $product->size )
@@ -48,6 +58,12 @@
                                     </div>
                                 @endisset
                             </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label class="mt-2">Quantity: </label><br>
+                                    <input type="number" class="form-control-sm" min="1" max="100" name="qty" value="1" style="min-width: 120px; margin-left: -4px;">
+                                </div>
+                            </div>
                         </div>
                         <div class="button-container">
                             <div class="input-group mb-3">
@@ -55,7 +71,7 @@
                                     @if($product->stock_quantity<1)
                                     <span class="text-danger">Stock Out</span>
                                     @else
-                                    <button class="btn btn-sm btn-outline-info" type="submit">Add to Cart</button>
+                                    <button class="btn btn-sm btn-outline-info" type="submit"><span class="loading d-none">...</span> Add to Cart</button>
                                     @endif
                                 </div>
                             </div>
@@ -66,3 +82,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.loader').ready(function(){
+        setTimeOut(function(){
+            $.('.product_view').removeClass("d-none");
+            $.('loader').css("display", "none");
+        }, 500);
+    });
+
+    $('#add_cart_form').submit(function(e){
+            e.preventDefault();
+            $('.loading').removeClass('d-none');
+            var url = $(this).attr('action');
+            var request =$(this).serialize();
+            $.ajax({
+                url:url,
+                type:'post',
+                async:false,
+                data:request,
+                success:function(data){
+                  toastr.success(data);
+                    $('#add_cart_form')[0].reset();
+                    $('.loading').addClass('d-none');
+                }
+            });
+        });
+</script>
