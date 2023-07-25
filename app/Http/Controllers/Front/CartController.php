@@ -21,4 +21,9 @@ class CartController extends Controller
         ]);
         return response()->json("Added!");
     }
+
+    public function myCart(){
+        $content = Cart::content();
+        return view('frontend.cart.cart', compact('content'));
+    }
 }

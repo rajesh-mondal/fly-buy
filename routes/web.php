@@ -31,8 +31,18 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'], function(){
     Route::get('/product-quick-view/{id}','IndexController@productQuickView');
     Route::put('/addtocart','CartController@addToCartQuickView')->name('add.to.cart.quickview');
 
+    //cart
+    Route::get('/all-cart','CartController@allCart')->name('all.cart');
+    Route::get('/my-cart','CartController@myCart')->name('cart');
+
+    //wishlist
+    Route::get('/add/wishlist{id}','ReviewController@addWishlist')->name('add.wishlist');
+
     //review
     Route::post('/store/review','ReviewController@store')->name('store.review');
-    Route::get('/add/wishlist{id}','ReviewController@addWishlist')->name('add.wishlist');
+});
+
+Route::get('cart/destroy', function(){
+    Cart::destroy();
 });
 
