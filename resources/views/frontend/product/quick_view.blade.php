@@ -26,7 +26,7 @@
                 <div class="order-info d-flex flex-row">
                     <form action="{{ route('add.to.cart.quickview') }}" method="post" id="add_cart_form">
                         @csrf
-                        @method('PUT');
+                        @method('PUT')
                         {{-- Add to Cart Details --}}
                         <input type="hidden" name="id" value="{{ $product->id }}">
                         @if($product->discount_price==NULL)
@@ -83,14 +83,8 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
-    $('.loader').ready(function(){
-        setTimeOut(function(){
-            $.('.product_view').removeClass("d-none");
-            $.('loader').css("display", "none");
-        }, 500);
-    });
-
     $('#add_cart_form').submit(function(e){
             e.preventDefault();
             $('.loading').removeClass('d-none');
@@ -105,6 +99,7 @@
                   toastr.success(data);
                     $('#add_cart_form')[0].reset();
                     $('.loading').addClass('d-none');
+                    cart();
                 }
             });
         });
